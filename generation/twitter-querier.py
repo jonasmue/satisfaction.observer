@@ -18,7 +18,7 @@ def query_leader(leader, api, date, n_tweets=1000):
         count = min(remaining, 100)
         remaining -= count
         query_dict = {
-            "q": leader.name if leader.search_first_name else leader.name.split()[1] + "-filter%3Aretweets",
+            "q": leader.name if leader.search_first_name else leader.name.split()[1] + "-filter:retweets",
             "lang": leader.country.language.split("-")[0],  # e.g. take "de" from "de-DE"
             "place_country": leader.country.language.split("-")[1],  # e.g. take "DE" from "de-DE"
             "until": date.strftime("%Y-%m-%d"),
