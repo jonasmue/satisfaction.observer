@@ -13,6 +13,15 @@ def find_min_id(array: List) -> int:
 
 
 def query_leader_for_date(leader: Leader, api: twitter.Api, date: datetime, n_tweets: int = 1000) -> List:
+    """
+    Uses a twitter API object to crawl tweets of one day regarding a leader
+
+    :param leader: The leader for whom tweets are to be crawled
+    :param api: A <code>twitter.Api</code> object
+    :param date: Used to determine for which day tweets are to be searched. Note: Tweets are searched for exactly *one day before* the given date.
+    :param n_tweets: The number of tweets to be crawled
+    :return:
+    """
     remaining = n_tweets
     max_id = None
     result = []
@@ -43,8 +52,15 @@ def query_leader_for_date(leader: Leader, api: twitter.Api, date: datetime, n_tw
     return result
 
 
-def query_leader_yesterday(leader: Leader, api: twitter.Api) -> List:
-    return query_leader_for_date(leader, api, datetime.now())
+def query_leader_yesterday(leader: Leader, api: twitter.Api, n_tweets: int = 1000) -> List:
+    """
+    Returns tweets regarding a leader from yesterday
+
+    :param leader: The leader for whom tweets are to be crawled
+    :param api: A <code>twitter.Api</code> object
+    :return: The number of tweets to be crawled
+    """
+    return query_leader_for_date(leader, api, datetime.now(), n_tweets)
 
 
 twitter_data = {}
