@@ -17,7 +17,7 @@ class Leader:
 
 class LeaderFactory:
     @staticmethod
-    def get_leaders(file_path) -> List[Leader]:
+    def get_leaders(file_path: str) -> List[Leader]:
         with open(file_path, "r") as input_file:
             leader_dict = json.load(input_file)
 
@@ -29,7 +29,7 @@ class LeaderFactory:
             since = datetime.strptime(leader["since"], "%Y-%m-%d")
             until = datetime.strptime(leader["until"], "%Y-%m-%d") if leader["until"] is not None else None
             country_item = leader["country"]
-            country = Country(country_item["name"], country_item["language"], country_item["flag"])
+            country = Country(country_item["name"], country_item["locale"], country_item["flag"])
             search_first_name = leader["firstName"] if "firstName" in leader.keys() else False
             result.append(Leader(name, image, country, since, until, search_first_name))
 
