@@ -10,7 +10,7 @@ def find_min_id(array):
     return min([item.id for item in array])
 
 
-def query_leader(leader, api, date, n_tweets=1000):
+def query_leader_for_date(leader, api, date, n_tweets=1000):
     remaining = n_tweets
     max_id = None
     result = []
@@ -41,18 +41,17 @@ def query_leader(leader, api, date, n_tweets=1000):
     return result
 
 
-def query_yesterday(leader, api):
-    return query_leader(leader, api, datetime.now())
+def query_leader_yesterday(leader, api):
+    return query_leader_for_date(leader, api, datetime.now())
 
-
-api = twitter.Api(consumer_key=os.environ["API_KEY"], consumer_secret=os.environ["API_SECRET"],
-                  access_token_key=os.environ["ACCESS_TOKEN"], access_token_secret=os.environ["ACCESS_SECRET"])
 
 twitter_data = {}
 leaders = LeaderFactory().get_leaders(os.path.join("..", "general", "leaders.json"))
+api = twitter.Api(consumer_key=os.environ["API_KEY"], consumer_secret=os.environ["API_SECRET"],
+                  access_token_key=os.environ["ACCESS_TOKEN"], access_token_secret=os.environ["ACCESS_SECRET"])
 
 for leader in tqdm(leaders):
-    twitter_data[leader.name] = [item.full_text for item in query_yesterday(leader, api)]
+    twitter_data[leader.name] = [item.full_text for item in query_leader_yesterday(leader, api)]
 
 with open(os.path.join("..", "_data", "raw", datetime.now().strftime("%Y-%m-%d") + ".json"), "w") as out_file:
     json.dump(twitter_data, out_file)
