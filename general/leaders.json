@@ -1,0 +1,103 @@
+{
+  "leaders": [
+    {
+      "leader": {
+        "name": "Angela Merkel",
+        "country": {
+          "name": "Germany",
+          "flag": "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
+          "language": "de-DE"
+        },
+        "title": "Chancellor",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Angela_Merkel_IMG_4162_edit.jpg/291px-Angela_Merkel_IMG_4162_edit.jpg",
+        "since": "2005-11-22",
+        "until": null
+      }
+    },
+    {
+      "leader": {
+        "name": "Boris Johnson",
+        "country": {
+          "name": "United Kingdom",
+          "flag": "https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg",
+          "language": "en-GB"
+        },
+        "title": "Prime Minister",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Boris_Johnson_%28cropped%29.jpg",
+        "since": "2019-07-24",
+        "until": null,
+        "firstName": true
+      }
+    },
+    {
+      "leader": {
+        "name": "Donald Trump",
+        "country": {
+          "name": "United States",
+          "flag": "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+          "language": "en-US"
+        },
+        "title": "President",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/379px-Donald_Trump_official_portrait.jpg",
+        "since": "2017-01-20",
+        "until": null
+      }
+    },
+    {
+      "leader": {
+        "name": "Mark Rutte",
+        "country": {
+          "name": "Netherlands",
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg",
+          "language": "nl-NL"
+        },
+        "title": "Prime Minister",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Rutte.jpg",
+        "since": "2010-10-14",
+        "until": null
+      }
+    },
+    {
+      "leader": {
+        "name": "Emmanuel Macron",
+        "country": {
+          "name": "France",
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Flag_of_France_%281794–1815%2C_1830–1958%29.svg",
+          "language": "fr-FR"
+        },
+        "title": "President",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Emmanuel_Macron_in_2019.jpg",
+        "since": "2017-05-14",
+        "until": null
+      }
+    },
+    {
+      "leader": {
+        "name": "Justin Trudeau",
+        "country": {
+          "name": "Canada",
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg",
+          "language": "en-CA"
+        },
+        "title": "Prime Minister",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Trudeau_visit_White_House_for_USMCA_%28cropped%29.jpg",
+        "since": "2015-11-04",
+        "until": null
+      }
+    },
+    {
+      "leader": {
+        "name": "Giuseppe Conte",
+        "country": {
+          "name": "Italy",
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg",
+          "language": "it-IT"
+        },
+        "title": "Prime Minister",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/640px-Flag_of_Italy.svg.png",
+        "since": "2018-06-01",
+        "until": null
+      }
+    }
+  ]
+}
