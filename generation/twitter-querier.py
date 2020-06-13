@@ -7,6 +7,9 @@ from general.leader import LeaderFactory, Leader
 from datetime import datetime, timedelta
 from tqdm import tqdm
 
+POPULAR = False
+TIME_DELTA_DAYS = 8
+
 
 def find_min_id(array: List) -> int:
     return min([item.id for item in array])
@@ -29,14 +32,14 @@ def query_leader_for_date(leader: Leader, api: twitter.Api, date: datetime, n_tw
         count = min(remaining, 100)
         remaining -= count
         query_dict = {
-            "q": leader.name if leader.search_first_name else leader.name.split()[1] + "-filter:retweets",
+            "q": (leader.name if leader.search_first_name else leader.name.split()[1]) + "-filter:retweets",
             "lang": leader.country.locale.split("-")[0],  # e.g. take "de" from "de-DE"
             "place_country": leader.country.locale.split("-")[1],  # e.g. take "DE" from "de-DE"
             "until": date.strftime("%Y-%m-%d"),
             "since": (date - timedelta(days=1)).strftime("%Y-%m-%d"),
             "count": str(count),
             "tweet_mode": "extended",
-            "result_type": "recent",  # one of [recent, popular, mixed]
+            "result_type": "mixed" if POPULAR else "recent",  # one of [recent, popular, mixed]
         }
         if max_id is not None:
             query_dict["max_id"] = str(max_id)
@@ -52,24 +55,20 @@ def query_leader_for_date(leader: Leader, api: twitter.Api, date: datetime, n_tw
     return result
 
 
-def query_leader_yesterday(leader: Leader, api: twitter.Api, n_tweets: int = 1000) -> List:
-    """
-    Returns tweets regarding a leader from yesterday
-
-    :param leader: The leader for whom tweets are to be crawled
-    :param api: A <code>twitter.Api</code> object
-    :return: The number of tweets to be crawled
-    """
-    return query_leader_for_date(leader, api, datetime.now(), n_tweets)
-
-
 twitter_data = {}
 leaders = LeaderFactory().get_leaders(os.path.join("..", "general", "leaders.json"))
+
+print("Querying twitter for", len(leaders), "leaders...")
 api = twitter.Api(consumer_key=os.environ["API_KEY"], consumer_secret=os.environ["API_SECRET"],
                   access_token_key=os.environ["ACCESS_TOKEN"], access_token_secret=os.environ["ACCESS_SECRET"])
 
+date = datetime.now() - timedelta(days=TIME_DELTA_DAYS)
 for leader in tqdm(leaders):
-    twitter_data[leader.name] = [item.full_text for item in query_leader_yesterday(leader, api)]
 
-with open(os.path.join("..", "_data", "raw", datetime.now().strftime("%Y-%m-%d") + ".json"), "w") as out_file:
+    twitter_data[leader.name] = [item.full_text for item in query_leader_for_date(leader, api, date)]
+print("Done. Saving tweets...")
+
+suffix = "_popular" if POPULAR else ""
+with open(os.path.join("..", "_data", "raw", date.strftime("%Y-%m-%d") + suffix + ".json"), "w") as out_file:
     json.dump(twitter_data, out_file)
+print("Done.")

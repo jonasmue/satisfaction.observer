@@ -1,40 +1,45 @@
 import os
 import json
-import numpy as np
 from transformers import *
 from tqdm import tqdm
+from datetime import datetime, timedelta
+from time import time
 
-DATE = "2020-06-05"
+TIME_DELTA_DAYS = 0
+POPULAR = False
 
-DATA_DIR = os.path.join("..", "_data")
-ANALYZED_DATA_DIR = os.path.join(DATA_DIR, "analyzed")
+for TIME_DELTA_DAYS in range(6, 8):
+    DATE = (datetime.now() - timedelta(days=TIME_DELTA_DAYS)).strftime("%Y-%m-%d")
 
-RAW_FILE = os.path.join(DATA_DIR, "raw", DATE + ".json")
-CLASSIFICATION_FILE = os.path.join(ANALYZED_DATA_DIR, DATE + "_classifications.json")
-OUTPUT_FILE = os.path.join(ANALYZED_DATA_DIR, DATE + "_classifications-mean-normalized.json")
+    DATA_DIR = os.path.join("..", "_data")
+    ANALYZED_DATA_DIR = os.path.join(DATA_DIR, "analyzed")
 
-tokenizer = AutoTokenizer.from_pretrained("nlptown/bert-base-multilingual-uncased-sentiment")
-model = AutoModelForSequenceClassification.from_pretrained("nlptown/bert-base-multilingual-uncased-sentiment")
-sentiment_analyzer = TextClassificationPipeline(model=model, tokenizer=tokenizer)
+    popular_suffix = "_popular" if POPULAR else ""
+    RAW_FILE = os.path.join(DATA_DIR, "cleaned", DATE + popular_suffix + ".json")
+    CLASSIFICATION_FILE = os.path.join(ANALYZED_DATA_DIR, DATE + popular_suffix + "_classifications.json")
+    OUTPUT_FILE = os.path.join(ANALYZED_DATA_DIR, DATE + popular_suffix + "_classifications-mean-normalized.json")
 
-with open(RAW_FILE, "r") as input_file:
-    tweets = json.load(input_file)
+    tokenizer = AutoTokenizer.from_pretrained("nlptown/bert-base-multilingual-uncased-sentiment")
+    model = AutoModelForSequenceClassification.from_pretrained("nlptown/bert-base-multilingual-uncased-sentiment")
+    sentiment_analyzer = TextClassificationPipeline(model=model, tokenizer=tokenizer)
 
-classification = {}
-for leader, leader_tweets in tweets.items():
-    classification[leader] = []
-    for tweet in tqdm(leader_tweets):
-        c = sentiment_analyzer(tweet)[0]
-        classification[leader].append((int(c["label"].split()[0]), c["score"]))
+    print("Opening", RAW_FILE)
+    with open(RAW_FILE, "r") as input_file:
+        tweets = json.load(input_file)
 
-with open(CLASSIFICATION_FILE, "w") as output_file:
-    json.dump(classification, output_file)
+    print("Predicting classes for", len(tweets), "leaders ...")
+    classification = {}
+    start = time()
+    for leader, leader_tweets in tweets.items():
+        print("Predicting classes for", leader, "...")
+        classification[leader] = []
+        for tweet in tqdm(leader_tweets):
+            c = sentiment_analyzer(tweet)[0]
+            classification[leader].append((int(c["label"].split()[0]), c["score"]))
+    print("Done. Took {} seconds".format(time() - start))
 
-mean_normalized_classifications = {}
-for leader in classification.keys():
-    classifications = [c[0] for c in classification[leader]]
-    weights = [c[1] for c in classification[leader]]
-    mean_normalized_classifications[leader] = np.average(classifications, weights=weights) * 100 / 5
+    print("Saving classes...")
+    with open(CLASSIFICATION_FILE, "w") as output_file:
+        json.dump(classification, output_file)
 
-with open(OUTPUT_FILE, "w") as output_file:
-    json.dump(mean_normalized_classifications, output_file)
+    print("Done.")
