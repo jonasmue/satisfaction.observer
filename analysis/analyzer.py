@@ -20,7 +20,7 @@ class SemanticClassificationAnalyzer:
         print("Predicting classes for", len(tweets), "leaders ...")
         classification = {}
         for leader, leader_tweets in tweets.items():
-            print("Predicting classes for", leader, "...")
+            print("\nPredicting classes for", leader, "...")
             classification[leader] = []
             for tweet in tqdm(leader_tweets):
                 c = self.sentiment_analyzer(tweet)[0]
