@@ -22,7 +22,7 @@ data_dir = "_data"
 raw_dir = os.path.join(data_dir, "raw")
 cleaned_dir = os.path.join(data_dir, "cleaned")
 analyzed_dir = os.path.join(data_dir, "analyzed")
-mean_norm_dir = os.path.join(data_dir, "mean_norm")
+target_dir = os.path.join("display", "data")
 
 # SETUP FILE NAMES AND PATHS
 popular_suffix = "_popular" if args.popular else ""
@@ -34,7 +34,7 @@ file_name = day_string + popular_suffix + ".json"
 raw_file = os.path.join(raw_dir, file_name)
 cleaned_file = os.path.join(cleaned_dir, file_name)
 classification_file = os.path.join(analyzed_dir, file_name)
-target_file = os.path.join(mean_norm_dir, file_name)
+target_file = os.path.join(target_dir, file_name)
 
 # EXECUTE ONE DATA SCRAPE AND ANALYSIS PROCEDURE
 print("GENERATING DATA FOR {}".format(day_string))
