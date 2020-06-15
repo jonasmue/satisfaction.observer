@@ -2,9 +2,9 @@ import json
 import os
 
 LEADER = "Angela Merkel"
-FILE_NAME = "2020-06-07_classifications.json"
+FILE_NAME = "2020-06-15_popular.json"
 FILE_DIR = os.path.join("..", "_data", "analyzed")
-TWEET_NAME = "2020-06-07.json"
+TWEET_NAME = "2020-06-15_popular.json"
 TWEET_DIR = os.path.join("..", "_data", "raw")
 
 with open(os.path.join(FILE_DIR, FILE_NAME), "r") as input_file:
