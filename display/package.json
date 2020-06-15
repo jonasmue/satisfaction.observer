@@ -1,0 +1,14 @@
+{
+  "name": "satisfaction.observer",
+  "version": "1.0.0",
+  "description": "Displaying sentiment towards global leaders.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Jonas Mueller",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
