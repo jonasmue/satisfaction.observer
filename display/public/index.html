@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <title>Satisfaction Observer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" type="text/css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+
+    <style>
+
+        .dataButton {
+            border: 2px solid transparent;
+            border-radius: 3rem;
+        }
+
+        .selected {
+            border-color: black;
+        }
+
+        main {
+            min-height: 100vh;
+        }
+
+        body {
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body class="font-serif">
+<main>
+    <div class="pl-10 pt-5">
+        <h1 class="text-3xl font-bold italic underline leading-tight">Satisfaction Observer</h1>
+        <p class="mt-3">Analyzing nations' tweets with respect to the attitude toward their respective heads of
+            government.</p>
+    </div>
+    <section class>
+        <div class="inline-block ml-auto mr-auto w-full px-10 py-5 text-right">
+            <span class="block mx-5 -my-4 underline">Tweet Type</span><br>
+            <a class="dataButton recentDataButton mx-1 px-4 py-1 cursor-pointer font-bold selected">Recent</a>
+            <a class="dataButton popularDataButton mx-1 px-4 py-1 cursor-pointer font-bold">Popular</a>
+        </div>
+        <div class="w-full" style="height: 70vh">
+            <div class="ml-auto mr-auto w-full h-full px-10">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <div class="w-full inline-block pt-5 px-10">
+            <a class="olderButton hidden cursor-pointer font-bold shadow-2xl">Previous</a>
+            <a class="newerButton hidden cursor-pointer font-bold float-right shadow-2xl">Next</a>
+        </div>
+    </section>
+    <section class="mt-20">
+        <div class="pl-10">
+            <h2 class="text-2xl mb-2 font-bold italic underline">About</h2>
+            <p>Text</p>
+            <h3 class="text-lg mt-5 mb-2 font-bold italic underline leading-tight">How Does It Work?</h3>
+            <p>Text</p>
+            <h3 class="text-lg mt-5 mb-2 font-bold italic underline leading-tight">What Is the Difference Between
+                'Recent' and 'Popular'?</h3>
+            <p>Text</p>
+            <h3 class="text-lg mt-5 mb-2 font-bold italic underline leading-tight">What Are the Limitations?</h3>
+            <p>Text</p>
+        </div>
+    </section>
+</main>
+
+<footer class="mt-24 flex flex-wrap px-10">
+    <div class="w-full lg:w-1/3 pt-5">
+        By <a class="font-bold" target="_blank" href="https://jonasportfol.io">Jonas Müller</a>
+        <span class="mx-10 font-bold"><a href="mailto:hej@jonasportfol.io">Contact</a></span>
+    </div>
+    <div class="w-full md:w-1/3 font-bold pt-5">
+        <a href="https://github.com/jonasmue/satisfaction.observer">Source Code</a>
+    </div>
+    <div class="w-full md:w-1/3 md:text-right font-bold py-5">
+        <span class="mr-2"><a target="_blank" href="https://www.compitencies.com/impressum/">Imprint</a></span>
+        <span class="mx-2"><a target="_blank"
+                              href="https://www.compitencies.com/impressum#privacy">Privacy Policy</a></span>
+    </div>
+
+</footer>
+
+<script src="javascripts/constants.js" type="text/javascript"></script>
+<script src="javascripts/script.js" type="text/javascript"></script>
+</body>
+</html>
