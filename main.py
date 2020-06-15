@@ -22,13 +22,13 @@ data_dir = "_data"
 raw_dir = os.path.join(data_dir, "raw")
 cleaned_dir = os.path.join(data_dir, "cleaned")
 analyzed_dir = os.path.join(data_dir, "analyzed")
-target_dir = os.path.join("display", "data")
+target_dir = os.path.join("display", "data", "popular") if args.popular else os.path.join("display", "data", "recent")
 
 # SETUP FILE NAMES AND PATHS
 popular_suffix = "_popular" if args.popular else ""
 day_string = (datetime.now() - timedelta(days=args.time_delta)).strftime("%Y-%m-%d")
 
-leaders_file = os.path.join("general", "leaders.json")
+leaders_file = os.path.join("display", "data", "leaders.json")
 
 file_name = day_string + popular_suffix + ".json"
 raw_file = os.path.join(raw_dir, file_name)
