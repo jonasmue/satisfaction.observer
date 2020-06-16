@@ -6,6 +6,7 @@ from generation.twitter_querier import TwitterQuerier
 from generation.text_cleaner import TextCleaner
 from analysis.analyzer import SemanticClassificationAnalyzer
 from analysis.mean_calculator import MeanCalculator
+from analysis.example_extractor import ExampleExtractor
 
 # SETUP ARGUMENT PARSER AND DEFAULT ARGUMENTS
 parser = argparse.ArgumentParser()
@@ -24,7 +25,10 @@ display_data_dir = os.path.join(root_path, "display", "data")
 raw_dir = os.path.join(data_dir, "raw")
 cleaned_dir = os.path.join(data_dir, "cleaned")
 analyzed_dir = os.path.join(data_dir, "analyzed")
-target_dir = os.path.join(display_data_dir, "popular") if args.popular else os.path.join(display_data_dir, "recent")
+
+tail_folder = "popular" if args.popular else "recent"
+target_dir = os.path.join(display_data_dir, tail_folder)
+example_tweet_dir = os.path.join(display_data_dir, "example_tweets", tail_folder)
 
 # SETUP FILE NAMES AND PATHS
 popular_suffix = "_popular" if args.popular else ""
@@ -37,6 +41,7 @@ raw_file = os.path.join(raw_dir, file_name)
 cleaned_file = os.path.join(cleaned_dir, file_name)
 classification_file = os.path.join(analyzed_dir, file_name)
 target_file = os.path.join(target_dir, file_name)
+example_file = os.path.join(example_tweet_dir, file_name)
 
 # EXECUTE ONE DATA SCRAPE AND ANALYSIS PROCEDURE
 print("GENERATING DATA FOR {}".format(day_string))
@@ -64,5 +69,11 @@ print("=" * 80)
 print("Generating Mean Normalized Values of Classes...")
 start = time()
 MeanCalculator(classification_file, target_file, args.classification_threshold).run()
+print("Done. Took {} seconds".format(time() - start))
+print("=" * 80)
+
+print("Extracting Example Tweets...")
+start = time()
+ExampleExtractor(raw_file, classification_file, example_file).run()
 print("Done. Took {} seconds".format(time() - start))
 print("=" * 80)
