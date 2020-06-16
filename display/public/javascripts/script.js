@@ -25,6 +25,17 @@ const SatisfactionObserver = (function () {
         return result;
     }
 
+    function addLeaderImages(data) {
+        let leaderNames = getLeaderNames(data);
+        for (let i in leaderNames) {
+            const dataForLeader = myChart.config.data.datasets[i]._meta[0].data;
+            const leaderFlag = new Image(30, 30);
+            let leaderImg = leaderNames[i].split(" ").join("-").toLowerCase().replace(/[^\x00-\x7F]/g, "");
+            leaderFlag.src = "/images/" + leaderImg + ".svg";
+            dataForLeader[dataForLeader.length - 1]._model.pointStyle = leaderFlag;
+        }
+    }
+
     function incrementHistory() {
         currentHistory += 1;
         getData();
@@ -62,7 +73,7 @@ const SatisfactionObserver = (function () {
             const labels = prettyPrintDates(Object.keys(data));
             const datasets = [];
             let leaderNames = getLeaderNames(data);
-            for (var i in leaderNames) {
+            for (let i in leaderNames) {
                 const leader = leaderNames[i];
                 datasets.push({
                     label: leader,
@@ -78,6 +89,7 @@ const SatisfactionObserver = (function () {
             myChart.data.datasets = datasets;
             myChart.data.labels = labels.reverse();
             myChart.update();
+            addLeaderImages(data);
         });
     }
 
