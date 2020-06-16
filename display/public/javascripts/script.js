@@ -25,12 +25,14 @@ const SatisfactionObserver = (function () {
         return result;
     }
 
-    function addLeaderImages(data) {
-        let leaderNames = getLeaderNames(data);
-        for (let i in leaderNames) {
-            const dataForLeader = myChart.config.data.datasets[i]._meta[0].data;
+    function addLeaderImages(chart) {
+        const datasets = chart.config.data.datasets;
+        for (let i in datasets) {
+            let dataset = datasets[i];
+            const dataForLeader = dataset._meta[0].data;
+            const leaderName = dataset.label;
             const leaderFlag = new Image(30, 30);
-            let leaderImg = leaderNames[i].split(" ").join("-").toLowerCase().replace(/[^\x00-\x7F]/g, "");
+            let leaderImg = leaderName.split(" ").join("-").toLowerCase().replace(/[^\x00-\x7F]/g, "");
             leaderFlag.src = "/images/" + leaderImg + ".svg";
             dataForLeader[dataForLeader.length - 1]._model.pointStyle = leaderFlag;
         }
@@ -89,7 +91,6 @@ const SatisfactionObserver = (function () {
             myChart.data.datasets = datasets;
             myChart.data.labels = labels.reverse();
             myChart.update();
-            addLeaderImages(data);
         });
     }
 
@@ -111,9 +112,22 @@ const SatisfactionObserver = (function () {
 
     return {
         registerEvents: registerEvents,
-        requestData: getData
+        requestData: getData,
+        updateCallback: addLeaderImages
     }
 
+}());
+
+SatisfactionObserver.chartPluginServices = (function () {
+    function registerUpdateCallback(callback) {
+        Chart.pluginService.register({
+            afterUpdate: (chart) => {
+                callback(chart);
+            }
+        })
+    }
+
+    return {registerUpdateCallback: registerUpdateCallback}
 }());
 
 /************************************
@@ -121,6 +135,7 @@ const SatisfactionObserver = (function () {
  ************************************/
 
 $(document).ready(() => {
+    SatisfactionObserver.chartPluginServices.registerUpdateCallback(SatisfactionObserver.updateCallback);
     SatisfactionObserver.registerEvents();
     SatisfactionObserver.requestData();
 });
