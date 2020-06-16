@@ -4,11 +4,15 @@
   "description": "Displaying sentiment towards global leaders.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "debug": "nodemon index.js"
   },
   "author": "Jonas Mueller",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
