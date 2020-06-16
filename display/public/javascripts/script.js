@@ -20,7 +20,16 @@ const SatisfactionObserver = (function () {
     function getDataForLeader(leader, data) {
         const result = [];
         for (var day of Object.values(data)) {
-            result.push(Math.round((day[leader] + Number.EPSILON) * 100) / 100);
+            result.unshift(Math.round((day[leader] + Number.EPSILON) * 100) / 100);
+        }
+        return result;
+    }
+
+    function getTweetsForLeader(leader, tweets) {
+        const result = {positive: [], negative: []};
+        for (var day of Object.values(tweets)) {
+            result.positive.unshift(day[leader]["pos"]);
+            result.negative.unshift(day[leader]["neg"]);
         }
         return result;
     }
@@ -66,9 +75,11 @@ const SatisfactionObserver = (function () {
     }
 
     function getData() {
+        $(".tweet-box").hide();
         const type = recent ? "recent" : "popular";
         $.get("/" + type + "?history=" + currentHistory, (response) => {
             const data = response["items"];
+            const tweets = response["tweets"];
             const moreLeft = response["moreLeft"];
             setWeekButtons(moreLeft);
             if (Object.keys(data).length === 0) return;
@@ -79,13 +90,14 @@ const SatisfactionObserver = (function () {
                 const leader = leaderNames[i];
                 datasets.push({
                     label: leader,
-                    data: getDataForLeader(leader, data).reverse(),
+                    data: getDataForLeader(leader, data),
                     fill: false,
                     backgroundColor: colorPalette[i],
                     borderColor: colorPalette[i],
                     pointStyle: pointStyles[i % pointStyles.length],
                     pointRadius: 6,
-                    lineTension: 0.15
+                    lineTension: 0.15,
+                    tweets: getTweetsForLeader(leader, tweets)
                 })
             }
             myChart.data.datasets = datasets;

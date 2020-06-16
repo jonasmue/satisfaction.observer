@@ -1,9 +1,9 @@
 const fs = require('fs');
 
 module.exports = {
-    readJsonDir: function (dirPath, history) {
+    readJsonDir: function (dirPath, tweetPath, history) {
         const files = fs.readdirSync(dirPath);
-        let obj = {items: {}};
+        let obj = {items: {}, tweets: {}};
         var index = 0;
         try {
             let historyInt = Number.parseInt(history);
@@ -18,9 +18,11 @@ module.exports = {
         for (var i = index; i < index + 7; i++) {
             const file = files[files.length - 1 - i];
             const date = file.split(".").shift();
-            obj["items"][date] = JSON.parse(fs.readFileSync(dirPath + file, "utf8"))
+            obj["items"][date] = JSON.parse(fs.readFileSync(dirPath + file, "utf8"));
+            obj["tweets"][date] = JSON.parse(fs.readFileSync(tweetPath + file, "utf8"));
         }
         obj["moreLeft"] = files.length >= index + 14; // is there another full week left?
+
         return obj
     }
 };

@@ -6,12 +6,14 @@ const dataReader = require("./exports/dataReader");
 
 app.get('/recent', (req, res) => {
     let dirPath = './data/recent/';
-    res.json(dataReader.readJsonDir(dirPath, req.query.history));
+    let tweetPath = './data/example_tweets/recent/';
+    res.json(dataReader.readJsonDir(dirPath, tweetPath, req.query.history));
 });
 
 app.get('/popular', (req, res) => {
     let dirPath = './data/popular/';
-    res.json(dataReader.readJsonDir(dirPath, req.query.history));
+    let tweetPath = './data/example_tweets/popular/';
+    res.json(dataReader.readJsonDir(dirPath, tweetPath, req.query.history));
 });
 
 app.use(express.static(__dirname + '/public/'));

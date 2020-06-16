@@ -72,6 +72,21 @@ const myChart = new Chart(ctx, {
                     fontFamily: fontFamilySans
                 }
             }]
+        },
+        tooltips: {
+            callbacks: {
+                afterLabel: (tooltipItem, data) => {
+                    const dataset = data["datasets"][tooltipItem.datasetIndex];
+                    let positiveTweet = dataset.tweets["positive"][tooltipItem.index][0];
+                    let negativeTweet = dataset.tweets["negative"][tooltipItem.index][0];
+                    $(".leader-tweet").html(dataset.label);
+                    $(".date-tweet").html(data.labels[tooltipItem.index]);
+                    $(".positive-tweet").find(".content").html(positiveTweet);
+                    $(".negative-tweet").find(".content").html(negativeTweet);
+                    $(".tweet-box").slideDown("fast");
+                }
+
+            }
         }
     }
 });
