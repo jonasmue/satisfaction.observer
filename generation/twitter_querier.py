@@ -67,7 +67,7 @@ class TwitterQuerier:
         leaders = LeaderFactory().get_leaders(self.leaders_file)
         print("Querying Twitter for", len(leaders), "leaders...")
         for leader in tqdm(leaders):
-            twitter_data[leader.name] = [item.full_text for item in self.query_leader_for_date(leader)]
+            twitter_data[leader.name] = [{item.id: item.full_text} for item in self.query_leader_for_date(leader)]
         print("Saving tweets...")
         with open(self.target_file, "w") as out_file:
             json.dump(twitter_data, out_file)

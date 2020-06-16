@@ -76,9 +76,21 @@ const myChart = new Chart(ctx, {
         tooltips: {
             callbacks: {
                 afterLabel: (tooltipItem, data) => {
+                    function getTweet(t) {
+                        if (typeof t !== "object") return t;
+                        const tweetText = Object.values(t)[0];
+                        const tweetId = Object.keys(t)[0];
+                        return tweetText
+                            + "<div class='block mt-1'>"
+                            + "<a class='uppercase text-blue-700 font-bold text-xs' target='_blank' href='https://twitter.com/i/status/" + tweetId + "'>Open on Twitter</a>"
+                            + "</div>"
+                    }
+
                     const dataset = data["datasets"][tooltipItem.datasetIndex];
-                    let positiveTweet = dataset.tweets["positive"][tooltipItem.index][0];
-                    let negativeTweet = dataset.tweets["negative"][tooltipItem.index][0];
+
+                    const positiveTweet = getTweet(dataset.tweets["positive"][tooltipItem.index][0]);
+                    const negativeTweet = getTweet(dataset.tweets["negative"][tooltipItem.index][0]);
+
                     $(".leader-tweet").html(dataset.label);
                     $(".date-tweet").html(data.labels[tooltipItem.index]);
                     $(".positive-tweet").find(".content").html(positiveTweet);

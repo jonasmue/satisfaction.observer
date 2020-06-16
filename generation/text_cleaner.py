@@ -36,7 +36,7 @@ class TextCleaner:
     @staticmethod
     def clean_tweet(leader, tweet):
         tweet_tokens = []
-        for word in tweet.split():
+        for word in list(tweet.values())[0].split():
             if TextCleaner.should_ignore_word(leader, word):
                 continue
             else:
