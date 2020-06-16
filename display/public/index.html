@@ -22,55 +22,56 @@
         main {
             min-height: 100vh;
         }
-
-        body {
-            background-color: antiquewhite;
-        }
     </style>
 </head>
-<body class="font-serif">
+<body class="font-serif bg-gray-200">
 <main>
     <div class="pl-10 pt-5">
-        <h1 class="text-3xl font-bold italic underline leading-tight">Satisfaction Observer</h1>
-        <p class="mt-3">Analyzing nations' tweets with respect to the attitude toward their respective heads of
-            government.</p>
+        <h1 class="text-3xl font-bold italic leading-tight">Satisfaction Observer</h1>
+        <p class="mt-3 font-sans">How positive (or negative) are tweets that people write about their head of government?</p>
     </div>
     <section class>
-        <div class="inline-block ml-auto mr-auto w-full px-10 py-5 text-right">
-            <span class="block mx-5 -my-4 underline">Tweet Type</span><br>
-            <a class="dataButton recentDataButton mx-1 px-4 py-1 cursor-pointer font-bold selected">Recent</a>
-            <a class="dataButton popularDataButton mx-1 px-4 py-1 cursor-pointer font-bold">Popular</a>
-        </div>
-        <div class="w-full" style="height: 70vh">
-            <div class="ml-auto mr-auto w-full h-full px-16">
-                <canvas id="myChart"></canvas>
+        <div class="w-full px-10 py-5">
+            <div class="bg-white shadow-xl rounded-lg" style="border-color: #2f7c9c">
+                <div class="w-full inline-block ml-auto mr-auto text-right pt-10 pb-5">
+                    <span class="block mx-5 -my-4 font-sans text-xs">Tweet Type</span><br>
+                    <a class="dataButton recentDataButton mx-1 px-4 py-1 cursor-pointer font-bold selected">Recent</a>
+                    <a class="dataButton popularDataButton mx-1 px-4 py-1 cursor-pointer font-bold">Popular</a>
+                </div>
+                <div class="w-full" style="height: 70vh">
+                    <div class="ml-auto mr-auto w-full h-full px-3">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                <div class="w-full inline-block pt-5">
+                    <a class="olderButton hidden cursor-pointer font-bold">Previous</a>
+                    <a class="newerButton hidden cursor-pointer font-bold float-right">Next</a>
+                </div>
             </div>
         </div>
-        <div class="w-full inline-block pt-5 px-10">
-            <a class="olderButton hidden cursor-pointer font-bold shadow-2xl">Previous</a>
-            <a class="newerButton hidden cursor-pointer font-bold float-right shadow-2xl">Next</a>
-        </div>
     </section>
-    <section class="mt-20">
-        <div class="pl-10">
-            <h2 class="text-2xl mb-2 font-bold italic underline">About</h2>
-            <p>Text</p>
-            <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">How Does It Work?</h3>
-            <p>Text</p>
-            <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">What Is the Difference Between
-                'Recent' and 'Popular'?</h3>
-            <p>Text</p>
-            <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">What Are the Limitations?</h3>
-            <p>Text</p>
-            <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">When Are the Charts Updated?</h3>
-            <p>Text</p>
+    <section class="mt-10">
+        <div class="px-10">
+            <div class="bg-white p-10 shadow-xl rounded-lg">
+                <h2 class="text-2xl mb-2 font-bold italic">About</h2>
+                <p class="font-sans">Text</p>
+                <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">How Does It Work?</h3>
+                <p class="font-sans">Text</p>
+                <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">What Is the Difference Between
+                    'Recent' and 'Popular'?</h3>
+                <p class="font-sans">Text</p>
+                <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">What Are the Limitations?</h3>
+                <p class="font-sans">Text</p>
+                <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">When Are the Charts Updated?</h3>
+                <p class="font-sans">Text</p>
+            </div>
         </div>
     </section>
 </main>
 
-<footer class="mt-24 flex flex-wrap px-10">
+<footer class="mt-16 flex flex-wrap px-10">
     <div class="w-full lg:w-1/3 pt-5">
-        By <a class="font-bold" target="_blank" href="https://jonasportfol.io">Jonas Müller</a>
+        <span class="font-sans">By</span> <a class="font-bold" target="_blank" href="https://jonasportfol.io">Jonas Müller</a>
         <span class="mx-10 font-bold"><a href="mailto:hej@jonasportfol.io">Contact</a></span>
     </div>
     <div class="w-full md:w-1/3 font-bold pt-5">

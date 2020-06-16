@@ -1,4 +1,5 @@
 const fontFamily = "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif";
+const fontFamilySans = "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'";
 const fontColor = "black";
 const fontSize = 13;
 
@@ -6,7 +7,7 @@ const colorPalette = [
     "#8c1526",
     "#d6604d",
     "#faaa87",
-    "#f9f9f9",
+    "#c6c6c6",
     "#d1e5f0",
     "#87bad3",
     "#2f7c9c",
@@ -55,7 +56,7 @@ const myChart = new Chart(ctx, {
                 scaleLabel: {
                     display: true,
                     labelString: "Date",
-                    fontFamily: fontFamily,
+                    fontFamily: fontFamilySans,
                     fontSize: fontSize
                 }
             }],
@@ -68,7 +69,7 @@ const myChart = new Chart(ctx, {
                 scaleLabel: {
                     display: true,
                     labelString: "% Satisfaction",
-                    fontFamily: fontFamily
+                    fontFamily: fontFamilySans
                 }
             }]
         }
