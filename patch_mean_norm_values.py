@@ -1,8 +1,9 @@
 import os
 from analysis.mean_calculator import MeanCalculator
 
-analyzed_dir = os.path.join("..", "_data", "analyzed")
-target_dir = os.path.join("..", "display", "data")
+root_path = os.path.dirname(__file__)
+analyzed_dir = os.path.join(root_path, "_data", "analyzed")
+target_dir = os.path.join(root_path, "display", "data")
 for file_name in os.listdir(analyzed_dir):
     is_popular = "popular" in file_name
     source_file = os.path.join(analyzed_dir, file_name)
