@@ -26,7 +26,7 @@
 </head>
 <body class="font-serif bg-gray-200">
 <main>
-    <div class="pl-10 pt-5">
+    <div class="px-10 pt-10">
         <h1 class="text-3xl font-bold italic leading-tight">Satisfaction Observer</h1>
         <p class="mt-3 font-sans">How positive (or negative) are tweets that people write about their head of
             government?</p>
@@ -109,16 +109,89 @@
         <div class="px-0 md:px-10">
             <div class="bg-white p-10 shadow-xl rounded-lg">
                 <h2 class="text-2xl mb-2 font-bold italic">About</h2>
-                <p class="font-sans">Text</p>
-                <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">How Does It Work?</h3>
-                <p class="font-sans">Text</p>
-                <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">What Is the Difference Between
+                <p class="font-sans">
+                    This application performs <a class=font-bold target="_blank"
+                                                 href="https://en.wikipedia.org/wiki/Sentiment_analysis">sentiment
+                    analysis</a> on tweets posted with respect to different
+                    heads of governments. The corresponding sentiment scores range on a scale from 0 to 100. One data
+                    point
+                    is generated for each day and each government leader as plotted in the chart above. If you hover
+                    above/tap
+                    on one of the data points, one positive and one negative example tweet will be shown below the
+                    chart.</p>
+                <h3 class="text-lg mt-10 mb-2 font-bold italic leading-tight">How Does It Work Behind the Scenes?</h3>
+                <p class="font-sans mb-4">The twitter data that are used for sentiment analysis are queried from the <a
+                        href="https://developer.twitter.com/en/docs/tweets/search/overview/standard" target="_blank"
+                        class="font-bold">
+                    Twitter Search API</a> once a day. Up to 1000 tweets per government leader are obtained in one
+                    cycle.</p>
+                <p class="font-sans mb-4">Subsequently, the tweets are cleaned: certain text fragments such as links
+                    and twitter handles are removed. Furthermore, the names of the government leaders are replaced with
+                    generic tokens (such as "president") in order to eliminate systematic bias that might be originating
+                    from the leaders' names.</p>
+                <p class="font-sans mb-4">In the next step, the cleaned tweets are put through a text classification
+                    pipeline.
+                    Concretely, we utilize the <a
+                            href="https://huggingface.co/transformers/main_classes/pipelines.html#textclassificationpipeline"
+                            target="_blank" class="font-bold">
+                        TextClassificationPipeline</a> from the awesome <a href="https://huggingface.co/transformers/"
+                                                                           target="_blank" class="font-bold">
+                        huggingface Transformers</a> framework. For sentiment analysis, the deep neural natural language
+                    processing model
+                    <a href="https://arxiv.org/abs/1810.04805" class="font-bold" target="_blank">BERT</a> is utilized.
+                    More specifically,
+                    we use the <a href="https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment"
+                                  target="_blank" class="font-bold">
+                        nlptown/bert-base-multilingual-uncased-sentiment</a> model.</p>
+                <p class="font-sans">The pipeline outputs sentiment labels
+                    between 1 and 5 with a respective confidence score for each tweet. We normalize labels on a scale
+                    between
+                    0 and 100 and calculate the average among all tweets for a leader weighted by the confidence scores.
+                    For this calculation, only labels with a confidence score of at least 0.65 are considered.</p>
+                <h3 class="text-lg mt-10 mb-2 font-bold italic leading-tight">What Is the Difference Between
                     'Recent' and 'Popular'?</h3>
-                <p class="font-sans">Text</p>
-                <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">What Are the Limitations?</h3>
-                <p class="font-sans">Text</p>
-                <h3 class="text-lg mt-5 mb-2 font-bold italic leading-tight">When Are the Charts Updated?</h3>
-                <p class="font-sans">Text</p>
+                <p class="font-sans">The Twitter Search API gives the opportunity to specify whether one wants to
+                    receive real-time ("recent") tweets at the time of the search request or the most popular results
+                    (as determined by a Twitter algorithm). In order to get a sufficient number of tweets, when choosing
+                    the "popular" option, the results include tweets obtained from a query with the "mixed" keyword,
+                    that is,
+                    both real-time as well as popular tweets. More information <a
+                            href="https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets"
+                            class="font-bold" target="_blank">here</a>.</p>
+                <h3 class="text-lg mt-10 mb-2 font-bold italic leading-tight">What Are the Limitations?</h3>
+                <p class="font-sans mb-4">
+                    <span class="text-red-400 font-bold">The charts should be taken with a big grain of salt!</span> For
+                    now, the results are only for educational purposes and do not claim to represent the sentiment in a
+                    realistic way. Sometimes tweets that are clearly negative are classified as positive and vice versa.
+                    This might be due to the following non-exhaustive set of limitations:
+                </p>
+                <ul class="font-sans list-disc ml-10">
+                    <li>The model was fine-tuned product reviews and not tweets. Thus, there might be linguistic
+                        discrepancies between
+                        the data the model was fine-tuned on and the data that is now used for classifications. I am
+                        currently working
+                        on a labeled dataset for tweets to further fine-tune the model and to investigate whether this
+                        will improve the
+                        predictive quality
+                    </li>
+                    <li>The model is particularly bad at classifying sarcasm – a common characteristic of tweets. The
+                        identification of
+                        sarcasm has been researched into (for example <a
+                                href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/reports/custom/15791781.pdf"
+                                target="_blank" class="font-bold">here</a>) but is still in its early stages.
+                    </li>
+                    <li>
+                        A tweet that is conveying positive sentiment might not necessarily incorporate a positive
+                        attitude towards the
+                        leader mentioned and vice versa. For example, an author might compose a happy tweet because of a
+                        alleged failure of a government leader. In this case, the sentiment would be positive, however
+                        the attitude
+                        towards the leader would be negative.
+                    </li>
+                </ul>
+                <h3 class="text-lg mt-10 mb-2 font-bold italic leading-tight">When Are the Charts Updated?</h3>
+                <p class="font-sans">The charts are updated once a day between 12 pm and 1 pm CE(S)T (depending on how
+                long the server takes to predict the sentiment labels).</p>
             </div>
         </div>
     </section>
