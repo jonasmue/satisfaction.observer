@@ -37,7 +37,7 @@
                 <div class="w-full inline-block ml-auto mr-auto text-right pt-10 pb-5">
                     <span class="text-gray-500 uppercase tracking-wider block mx-5 -my-4 font-sans text-xs">Tweet Type</span><br>
                     <a class="dataButton recentDataButton mx-1 px-4 py-1 cursor-pointer font-bold selected">Recent</a>
-                    <a class="dataButton popularDataButton mx-1 px-4 py-1 cursor-pointer font-bold">Popular</a>
+                    <a class="dataButton popularDataButton mx-1 px-4 py-1 cursor-pointer font-bold">Mixed</a>
                 </div>
                 <div class="w-full" style="height: 70vh">
                     <div class="ml-auto mr-auto w-full h-full px-3">
@@ -136,7 +136,8 @@
                             target="_blank" class="font-bold">
                         TextClassificationPipeline</a> from the awesome <a href="https://huggingface.co/transformers/"
                                                                            target="_blank" class="font-bold">
-                        Hugging Face Transformers</a> framework. For sentiment analysis, the deep neural natural language
+                        Hugging Face Transformers</a> framework. For sentiment analysis, the deep neural natural
+                    language
                     processing model
                     <a href="https://arxiv.org/abs/1810.04805" class="font-bold" target="_blank">BERT</a> is utilized.
                     More specifically,
@@ -149,11 +150,11 @@
                     0 and 100 and calculate the average among all tweets for a leader weighted by the confidence scores.
                     For this calculation, only labels with a confidence score of at least 0.65 are considered.</p>
                 <h3 class="text-lg mt-10 mb-2 font-bold italic leading-tight">What Is the Difference Between
-                    'Recent' and 'Popular'?</h3>
+                    'Recent' and 'Mixed'?</h3>
                 <p class="font-sans">The Twitter Search API gives the opportunity to specify whether one wants to
                     receive real-time ("recent") tweets at the time of the search request or the most popular results
                     (as determined by a Twitter algorithm). In order to get a sufficient number of tweets, when choosing
-                    the "popular" option, the results include tweets obtained from a query with the "mixed" keyword,
+                    the "mixed" option above, the results include tweets obtained from a query with the "mixed" keyword,
                     that is,
                     both real-time as well as popular tweets. More information <a
                             href="https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets"
@@ -166,7 +167,7 @@
                     This might be due to the following non-exhaustive set of limitations:
                 </p>
                 <ul class="font-sans list-disc ml-10">
-                    <li>The model was fine-tuned product reviews and not tweets. Thus, there might be linguistic
+                    <li>The model was fine-tuned on product reviews and not tweets. Thus, there might be linguistic
                         discrepancies between
                         the data the model was fine-tuned on and the data that is now used for classifications. I am
                         currently working
@@ -181,7 +182,8 @@
                                 target="_blank" class="font-bold">here</a>) but is still in its early stages.
                     </li>
                     <li>
-                        A tweet that is conveying positive sentiment might not necessarily incorporate a positive
+                        A very common observation is that tweets that are conveying positive sentiment might not
+                        necessarily incorporate a positive
                         attitude towards the
                         leader mentioned and vice versa. For example, an author might compose a happy tweet because of a
                         potential failure of a government leader. In this case, the sentiment would be positive, however
@@ -190,8 +192,9 @@
                     </li>
                 </ul>
                 <h3 class="text-lg mt-10 mb-2 font-bold italic leading-tight">When Are the Charts Updated?</h3>
-                <p class="font-sans">The charts are updated once a day between 12 pm and 1 pm CE(S)T (depending on how
-                long the server takes to predict the sentiment labels).</p>
+                <p class="font-sans">The charts are updated once a day between 12 pm and 1 pm CE(S)T (the exact point in
+                    time depends on how
+                    long the server takes to predict the sentiment labels).</p>
             </div>
         </div>
     </section>
