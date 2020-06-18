@@ -7,13 +7,23 @@ const dataReader = require("./exports/dataReader");
 app.get('/recent', (req, res) => {
     let dirPath = './data/recent/';
     let tweetPath = './data/example_tweets/recent/';
-    res.json(dataReader.readJsonDir(dirPath, tweetPath, req.query.history));
+    try {
+        res.json(dataReader.readJsonDir(dirPath, tweetPath, req.query.history));
+    } catch (e) {
+        res.statusMessage = "The request contained bad parameters";
+        res.status(400).end();
+    }
 });
 
 app.get('/popular', (req, res) => {
     let dirPath = './data/popular/';
     let tweetPath = './data/example_tweets/popular/';
-    res.json(dataReader.readJsonDir(dirPath, tweetPath, req.query.history));
+    try {
+        res.json(dataReader.readJsonDir(dirPath, tweetPath, req.query.history));
+    } catch (e) {
+        res.statusMessage = "The request contained bad parameters";
+        res.status(400).end();
+    }
 });
 
 app.use(express.static(__dirname + '/public/'));

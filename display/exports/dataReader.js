@@ -4,14 +4,11 @@ module.exports = {
     readJsonDir: function (dirPath, tweetPath, history) {
         const files = fs.readdirSync(dirPath);
         let obj = {items: {}, tweets: {}};
-        var index = 0;
-        try {
-            let historyInt = Number.parseInt(history);
-            historyInt = Math.max(historyInt, 0);
-            index = !!history ? historyInt * 7 : 0
-        } catch (e) {
-            return {moreLeft: false, items: {}}
-        }
+
+        let historyInt = Number.parseInt(history);
+        historyInt = Math.max(historyInt, 0);
+        index = !!history ? historyInt * 7 : 0;
+
         if (index > files.length - 7) {
             return {moreLeft: false, items: {}}
         }
