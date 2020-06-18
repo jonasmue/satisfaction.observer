@@ -3,14 +3,14 @@ const fs = require('fs');
 module.exports = {
     readJsonDir: function (dirPath, tweetPath, history) {
         const files = fs.readdirSync(dirPath);
-        let obj = {items: {}, tweets: {}};
+        let obj = {items: {}, tweets: {}, moreLeft: false};
 
         let historyInt = Number.parseInt(history);
         historyInt = Math.max(historyInt, 0);
         index = !!history ? historyInt * 7 : 0;
 
         if (index > files.length - 7) {
-            return {moreLeft: false, items: {}}
+            return obj
         }
         for (var i = index; i < index + 7; i++) {
             const file = files[files.length - 1 - i];
