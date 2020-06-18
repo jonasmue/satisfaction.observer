@@ -6,6 +6,7 @@ module.exports = {
         let obj = {items: {}, tweets: {}, moreLeft: false};
 
         let historyInt = Number.parseInt(history);
+        if (Number.isNaN(historyInt)) throw RangeError("History parameter is not valid");
         historyInt = Math.max(historyInt, 0);
         index = !!history ? historyInt * 7 : 0;
 
