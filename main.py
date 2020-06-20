@@ -36,6 +36,7 @@ category = [c for c in categories if c["name"] == category_str][0]
 category_path = category["path"]
 data_dir = os.path.join(root_path, "_data", category_path)
 display_category_dir = os.path.join(display_data_dir, category_path)
+
 raw_dir = os.path.join(data_dir, "raw")
 cleaned_dir = os.path.join(data_dir, "cleaned")
 analyzed_dir = os.path.join(data_dir, "analyzed")
@@ -43,6 +44,13 @@ analyzed_dir = os.path.join(data_dir, "analyzed")
 tail_folder = "popular" if args.popular else "recent"
 target_dir = os.path.join(display_category_dir, tail_folder)
 example_tweet_dir = os.path.join(display_category_dir, "example_tweets", tail_folder)
+
+# OPTIONALLY MAKE DIRS
+os.makedirs(raw_dir, exist_ok=True)
+os.makedirs(cleaned_dir, exist_ok=True)
+os.makedirs(analyzed_dir, exist_ok=True)
+os.makedirs(target_dir, exist_ok=True)
+os.makedirs(example_tweet_dir, exist_ok=True)
 
 # SETUP FILE NAMES AND PATHS
 popular_suffix = "_popular" if args.popular else ""
