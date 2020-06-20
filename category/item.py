@@ -33,7 +33,7 @@ class ItemFactory:
     """
 
     @staticmethod
-    def get_items(file_path: str) -> (List[Item], Dict[str:str]):
+    def get_items(file_path: str) -> (List[Item], Dict[str, str]):
         """
         Parses given file and returns list of <code>Item</code> objects represented in the file.
 
