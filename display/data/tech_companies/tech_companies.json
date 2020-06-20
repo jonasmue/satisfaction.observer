@@ -1,0 +1,100 @@
+{
+  "tech_companies": [
+    {
+      "company": {
+        "name": "Google",
+        "country": {
+          "name": "United States",
+          "locale": "en-EN"
+        },
+        "logo": "/images/tech_companies/google.svg",
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "company": {
+        "name": "Facebook",
+        "country": {
+          "name": "United States",
+          "locale": "en-EN"
+        },
+        "logo": "/images/tech_companies/facebook.svg",
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "company": {
+        "name": "Amazon",
+        "country": {
+          "name": "United States",
+          "locale": "en-EN"
+        },
+        "logo": "/images/tech_companies/amazon.svg",
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "company": {
+        "name": "HP",
+        "country": {
+          "name": "United States",
+          "locale": "en-EN"
+        },
+        "logo": "/images/tech_companies/hp.svg",
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "company": {
+        "name": "Apple",
+        "country": {
+          "name": "United States",
+          "locale": "en-EN"
+        },
+        "logo": "/images/tech_companies/apple.svg",
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "company": {
+        "name": "Paypal",
+        "country": {
+          "name": "United States",
+          "locale": "en-EN"
+        },
+        "logo": "/images/tech_companies/paypal.svg",
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "company": {
+        "name": "Uber",
+        "country": {
+          "name": "United States",
+          "locale": "en-EN"
+        },
+        "logo": "/images/tech_companies/uber.svg",
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "company": {
+        "name": "Microsoft",
+        "country": {
+          "name": "United States",
+          "locale": "en-EN"
+        },
+        "logo": "/images/tech_companies/microsof.svg",
+        "since": null,
+        "until": null
+      }
+    }
+  ]
+}

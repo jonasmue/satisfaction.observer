@@ -1,0 +1,106 @@
+{
+  "leaders": [
+    {
+      "leader": {
+        "name": "Angela Merkel",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "logo": "/images/leaders/angela-merkel.svg",
+        "since": "2005-11-22",
+        "until": null,
+        "searchTerm": "Merkel"
+      }
+    },
+    {
+      "leader": {
+        "name": "Boris Johnson",
+        "country": {
+          "name": "United Kingdom",
+          "locale": "en-GB"
+        },
+        "logo": "/images/leaders/boris-johnson.svg",
+        "since": "2019-07-24",
+        "until": null
+      }
+    },
+    {
+      "leader": {
+        "name": "Donald Trump",
+        "country": {
+          "name": "United States",
+          "locale": "en-US"
+        },
+        "logo": "/images/leaders/donald-trump.svg",
+        "since": "2017-01-20",
+        "until": null,
+        "searchTerm": "Trump"
+      }
+    },
+    {
+      "leader": {
+        "name": "Mark Rutte",
+        "country": {
+          "name": "Netherlands",
+          "locale": "nl-NL"
+        },
+        "logo": "/images/leaders/mark-rutte.svg",
+        "since": "2010-10-14",
+        "until": null,
+        "searchTerm": "Rutte"
+      }
+    },
+    {
+      "leader": {
+        "name": "Emmanuel Macron",
+        "country": {
+          "name": "France",
+          "locale": "fr-FR"
+        },
+        "logo": "/images/leaders/emmanuel-macron.svg",
+        "since": "2017-05-14",
+        "until": null,
+        "searchTerm": "Macron"
+      }
+    },
+    {
+      "leader": {
+        "name": "Justin Trudeau",
+        "country": {
+          "name": "Canada",
+          "locale": "en-CA"
+        },
+        "logo": "/images/leaders/justin-trudeau.svg",
+        "since": "2015-11-04",
+        "until": null,
+        "searchTerm": "Trudeau"
+      }
+    },
+    {
+      "leader": {
+        "name": "Giuseppe Conte",
+        "country": {
+          "name": "Italy",
+          "locale": "it-IT"
+        },
+        "logo": "/images/leaders/giuseppe-conte.svg",
+        "since": "2018-06-01",
+        "until": null,
+        "searchTerm": "Conte"
+      }
+    },
+    {
+      "leader": {
+        "name": "Pedro Sánchez",
+        "country": {
+          "name": "Spain",
+          "locale": "es-ES"
+        },
+        "logo": "/images/leaders/pedro-snchez.svg",
+        "since": "2018-06-02",
+        "until": null
+      }
+    }
+  ]
+}
