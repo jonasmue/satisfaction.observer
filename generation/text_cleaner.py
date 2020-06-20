@@ -1,62 +1,58 @@
 import json
-import os
 
-from general.leader import LeaderFactory
+from category.item import ItemFactory
 
 
 class TextCleaner:
-    leader_term_for_lang = {
-        "en": "president",
-        "de": "präsident",
-        "fr": "président",
-        "nl": "president",
-        "it": "presidente",
-        "es": "presidente"
-    }
 
-    def __init__(self, source_file, target_file, leaders_file):
+    def __init__(self, source_file, target_file, manifest_file):
         self.source_file = source_file
         self.target_file = target_file
-        self.leaders_file = leaders_file
+        self.manifest_file = manifest_file
 
     @staticmethod
-    def should_ignore_word(leader, word):
-        return leader.name.split()[0] in word or word.startswith("@") or "http" in word
+    def should_ignore_word(item, word):
+        split = item.name.lower().split()
+        if len(split) > 1:
+            for split_part in split[:-1]:
+                if split_part in word:
+                    return True
+        return word.startswith("@") or "http" in word
 
     @staticmethod
-    def clean_word(leader, word):
-        last_name = leader.name.split()[1]
+    def clean_word(item, word, replacement_dict):
+        last_part = item.name.lower().split()[-1]
         if word.startswith("#"):
             word = word[1:]
-        if last_name in word:
-            word = TextCleaner.leader_term_for_lang[leader.country.locale.split("-")[0]]
-        word = word.lower()
+        if last_part in word:
+            word = replacement_dict[item.country.locale.split("-")[0]]
         return word
 
     @staticmethod
-    def clean_tweet(leader, tweet):
+    def clean_tweet(item, tweet, replacement_dict):
         tweet_tokens = []
         for word in list(tweet.values())[0].split():
-            if TextCleaner.should_ignore_word(leader, word):
+            word = word.lower()
+            if TextCleaner.should_ignore_word(item, word):
                 continue
             else:
-                tweet_tokens.append(TextCleaner.clean_word(leader, word))
+                tweet_tokens.append(TextCleaner.clean_word(item, word, replacement_dict))
 
         return " ".join(tweet_tokens)
 
     @staticmethod
-    def clean_tweets(leader, tweets):
-        return [TextCleaner.clean_tweet(leader, tweet) for tweet in tweets]
+    def clean_tweets(item, tweets, replacement_dict):
+        return [TextCleaner.clean_tweet(item, tweet, replacement_dict) for tweet in tweets]
 
     def run(self):
         with open(self.source_file, "r") as input_file:
-            tweets_by_leader = json.load(input_file)
-        leaders = LeaderFactory().get_leaders(self.leaders_file)
-        cleaned_by_leader = {}
+            tweets_by_item = json.load(input_file)
+        items, replacement_dict = ItemFactory().get_items(self.manifest_file)
+        cleaned_by_item = {}
 
-        for leader_name, tweets in tweets_by_leader.items():
-            leader = [leader for leader in leaders if leader.name == leader_name][0]
-            cleaned_by_leader[leader.name] = TextCleaner.clean_tweets(leader, tweets)
+        for item_name, tweets in tweets_by_item.items():
+            item = [item for item in items if item.name == item_name][0]
+            cleaned_by_item[item.name] = TextCleaner.clean_tweets(item, tweets, replacement_dict)
 
         with open(self.target_file, "w") as output_file:
-            json.dump(cleaned_by_leader, output_file)
+            json.dump(cleaned_by_item, output_file)

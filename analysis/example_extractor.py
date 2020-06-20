@@ -15,8 +15,8 @@ class ExampleExtractor:
             classifications = json.load(input_file)
 
         result = {}
-        for leader, classification_list in classifications.items():
-            result[leader] = {}
+        for category_item, classification_list in classifications.items():
+            result[category_item] = {}
             five_star_classifications = {i: c[1] for i, c in enumerate(classification_list) if c[0] == 5}
             one_star_classifications = {i: c[1] for i, c in enumerate(classification_list) if c[0] == 1}
 
@@ -28,8 +28,8 @@ class ExampleExtractor:
             max_five_star = list(five_star_classifications.keys())[-self.extract_num:]
             max_one_star = list(one_star_classifications.keys())[-self.extract_num:]
 
-            result[leader]["pos"] = [tweets[leader][t] for t in max_five_star]
-            result[leader]["neg"] = [tweets[leader][t] for t in max_one_star]
+            result[category_item]["pos"] = [tweets[category_item][t] for t in max_five_star]
+            result[category_item]["neg"] = [tweets[category_item][t] for t in max_one_star]
 
         with open(self.target_file, "w") as output_file:
             json.dump(result, output_file)

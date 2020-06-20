@@ -1,7 +1,7 @@
 {
-  "leaders": [
+  "items": [
     {
-      "leader": {
+      "item": {
         "name": "Angela Merkel",
         "country": {
           "name": "Germany",
@@ -14,7 +14,7 @@
       }
     },
     {
-      "leader": {
+      "item": {
         "name": "Boris Johnson",
         "country": {
           "name": "United Kingdom",
@@ -26,7 +26,7 @@
       }
     },
     {
-      "leader": {
+      "item": {
         "name": "Donald Trump",
         "country": {
           "name": "United States",
@@ -39,7 +39,7 @@
       }
     },
     {
-      "leader": {
+      "item": {
         "name": "Mark Rutte",
         "country": {
           "name": "Netherlands",
@@ -52,7 +52,7 @@
       }
     },
     {
-      "leader": {
+      "item": {
         "name": "Emmanuel Macron",
         "country": {
           "name": "France",
@@ -65,7 +65,7 @@
       }
     },
     {
-      "leader": {
+      "item": {
         "name": "Justin Trudeau",
         "country": {
           "name": "Canada",
@@ -78,7 +78,7 @@
       }
     },
     {
-      "leader": {
+      "item": {
         "name": "Giuseppe Conte",
         "country": {
           "name": "Italy",
@@ -91,7 +91,7 @@
       }
     },
     {
-      "leader": {
+      "item": {
         "name": "Pedro Sánchez",
         "country": {
           "name": "Spain",
@@ -102,5 +102,13 @@
         "until": null
       }
     }
-  ]
+  ],
+  "cleanReplacement": {
+    "en": "president",
+    "de": "präsident",
+    "fr": "président",
+    "nl": "president",
+    "it": "presidente",
+    "es": "presidente"
+  }
 }

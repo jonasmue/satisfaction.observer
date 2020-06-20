@@ -1,11 +1,11 @@
 {
-  "tech_companies": [
+  "items": [
     {
-      "company": {
+      "item": {
         "name": "Google",
         "country": {
           "name": "United States",
-          "locale": "en-EN"
+          "locale": "en"
         },
         "logo": "/images/tech_companies/google.svg",
         "since": null,
@@ -13,11 +13,11 @@
       }
     },
     {
-      "company": {
+      "item": {
         "name": "Facebook",
         "country": {
           "name": "United States",
-          "locale": "en-EN"
+          "locale": "en"
         },
         "logo": "/images/tech_companies/facebook.svg",
         "since": null,
@@ -25,11 +25,11 @@
       }
     },
     {
-      "company": {
+      "item": {
         "name": "Amazon",
         "country": {
           "name": "United States",
-          "locale": "en-EN"
+          "locale": "en"
         },
         "logo": "/images/tech_companies/amazon.svg",
         "since": null,
@@ -37,23 +37,24 @@
       }
     },
     {
-      "company": {
-        "name": "HP",
+      "item": {
+        "name": "Hewlett Packard",
         "country": {
           "name": "United States",
-          "locale": "en-EN"
+          "locale": "en"
         },
         "logo": "/images/tech_companies/hp.svg",
         "since": null,
-        "until": null
+        "until": null,
+        "searchTerm": "HP"
       }
     },
     {
-      "company": {
+      "item": {
         "name": "Apple",
         "country": {
           "name": "United States",
-          "locale": "en-EN"
+          "locale": "en"
         },
         "logo": "/images/tech_companies/apple.svg",
         "since": null,
@@ -61,11 +62,11 @@
       }
     },
     {
-      "company": {
+      "item": {
         "name": "Paypal",
         "country": {
           "name": "United States",
-          "locale": "en-EN"
+          "locale": "en"
         },
         "logo": "/images/tech_companies/paypal.svg",
         "since": null,
@@ -73,11 +74,11 @@
       }
     },
     {
-      "company": {
+      "item": {
         "name": "Uber",
         "country": {
           "name": "United States",
-          "locale": "en-EN"
+          "locale": "en"
         },
         "logo": "/images/tech_companies/uber.svg",
         "since": null,
@@ -85,16 +86,19 @@
       }
     },
     {
-      "company": {
+      "item": {
         "name": "Microsoft",
         "country": {
           "name": "United States",
-          "locale": "en-EN"
+          "locale": "en"
         },
         "logo": "/images/tech_companies/microsof.svg",
         "since": null,
         "until": null
       }
     }
-  ]
+  ],
+  "cleanReplacement": {
+    "en": "company"
+  }
 }
