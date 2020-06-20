@@ -106,6 +106,35 @@ const SatisfactionObserver = (function () {
         });
     }
 
+    function initialize() {
+        registerEvents();
+        initializeCategorySelect();
+    }
+
+    function initializeCategorySelect() {
+
+        let placeHolderSel = '.placeholder';
+        let listUlSel = '.select-list__ul';
+
+        $(placeHolderSel).click(() => {
+            $(placeHolderSel).css('opacity', '0');
+            $(listUlSel).toggle();
+        });
+
+        $(listUlSel + ' a').click(function (e) {
+            e.preventDefault();
+            var index = $(this).parent().index();
+
+            let text = $(this).text();
+            console.log(index);
+            $(placeHolderSel).text(text).css('opacity', '1');
+
+            $(listUlSel).find('li').eq(index).prependTo(listUlSel);
+            $(listUlSel).toggle();
+
+        });
+    }
+
 
     function registerEvents() {
         $('.popularDataButton').click(() => {
@@ -123,7 +152,7 @@ const SatisfactionObserver = (function () {
     }
 
     return {
-        registerEvents: registerEvents,
+        registerEvents: initialize,
         requestData: getData,
         updateCallback: addLeaderImages
     }
