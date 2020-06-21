@@ -2,7 +2,107 @@ const SatisfactionObserver = (function () {
     'use strict';
     let recent = false;
     let currentHistory = 0;
-    let currentCategory = -1;
+    let currentCategory = null;
+
+    function getCurrentHistory() {
+        return currentHistory;
+    }
+
+    function setCurrentHistory(newHistory) {
+        currentHistory = newHistory;
+    }
+
+    function getCurrentCategory() {
+        return currentCategory;
+    }
+
+    function setCurrentCategory(newCategory) {
+        currentCategory = newCategory;
+    }
+
+    function getRecent() {
+        return recent;
+    }
+
+    function setRecent(isRecent) {
+        recent = isRecent;
+    }
+
+
+    return {
+        getRecent: getRecent,
+        setRecent: setRecent,
+        getCurrentCategory: getCurrentCategory,
+        setCurrentCategory: setCurrentCategory,
+        getCurrentHistory: getCurrentHistory,
+        setCurrentHistory: setCurrentHistory
+    }
+
+}());
+
+SatisfactionObserver.apiHandler = (function () {
+    function getCategories(callback) {
+        $.get("/categories", (response) => {
+            if (!response.length) return;
+            $('.placeholder').html(response[0].title);
+            for (let cat of response) {
+                $('.select-list__ul').append(
+                    "<li><a href='' style='color: " + colorPalette[1] + "' data-category-name='" + cat.name + "'>" + cat.title + "</a><hr>"
+                )
+
+            }
+            SatisfactionObserver.setCurrentCategory(response[0].name);
+            callback(response);
+        });
+    }
+
+    function getData() {
+        $(".tweet-box").hide();
+        const type = SatisfactionObserver.getRecent() ? "recent" : "popular";
+        $.get("/" + type
+            + "?history=" + SatisfactionObserver.getCurrentHistory()
+            + "&category=" + SatisfactionObserver.getCurrentCategory(),
+            (response) => {
+                SatisfactionObserver.dataHandler.onNewData(response);
+            });
+    }
+
+    return {
+        getCategories: getCategories,
+        getData: getData
+    }
+
+}());
+
+SatisfactionObserver.dataHandler = (function () {
+
+    function onNewData(response) {
+        const data = response["items"];
+        const tweets = response["tweets"];
+        const moreLeft = response["moreLeft"];
+        SatisfactionObserver.interactionHandler.setWeekButtons(moreLeft);
+        if (Object.keys(data).length === 0) return;
+        const labels = prettyPrintDates(Object.keys(data));
+        const datasets = [];
+        let itemNames = getItemNames(data);
+        for (let i in itemNames) {
+            const item = itemNames[i];
+            datasets.push({
+                label: item,
+                data: getDataForItem(item, data),
+                fill: false,
+                backgroundColor: colorPalette[i],
+                borderColor: colorPalette[i],
+                pointStyle: pointStyles[i % pointStyles.length],
+                pointRadius: 6,
+                lineTension: 0.15,
+                tweets: getTweetsForItem(item, tweets)
+            })
+        }
+        myChart.data.datasets = datasets;
+        myChart.data.labels = labels.reverse();
+        myChart.update();
+    }
 
     function prettyPrintDates(data) {
         const result = [];
@@ -18,118 +118,45 @@ const SatisfactionObserver = (function () {
         return Object.keys(data[Object.keys(data)[0]]);
     }
 
-    function getDataForItem(leader, data) {
+    function getDataForItem(item, data) {
         const result = [];
         for (var day of Object.values(data)) {
-            result.unshift(Math.round((day[leader] + Number.EPSILON) * 100) / 100);
+            result.unshift(Math.round((day[item] + Number.EPSILON) * 100) / 100);
         }
         return result;
     }
 
-    function getTweetsForItem(leader, tweets) {
+    function getTweetsForItem(item, tweets) {
         const result = {positive: [], negative: []};
         for (var day of Object.values(tweets)) {
-            result.positive.unshift(day[leader]["pos"]);
-            result.negative.unshift(day[leader]["neg"]);
+            result.positive.unshift(day[item]["pos"]);
+            result.negative.unshift(day[item]["neg"]);
         }
         return result;
     }
 
-    function addItemImages(chart) {
-        const datasets = chart.config.data.datasets;
+    function addItemImages() {
+        const datasets = myChart.config.data.datasets;
         for (let i in datasets) {
             let dataset = datasets[i];
             const dataForItem = dataset._meta[0].data;
             const itemName = dataset.label;
             const itemLogo = new Image(30, 30);
             let itemImg = itemName.split(" ").join("-").toLowerCase().replace(/[^\x00-\x7F]/g, "");
-            itemLogo.src = "/images/" + currentCategory + "/" + itemImg + ".svg";
+            itemLogo.src = "/images/" + SatisfactionObserver.getCurrentCategory() + "/" + itemImg + ".svg";
             dataForItem[dataForItem.length - 1]._model.pointStyle = itemLogo;
         }
     }
 
-    function incrementHistory() {
-        currentHistory += 1;
-        getData();
+    return {
+        onNewData: onNewData,
+        addItemImages: addItemImages
     }
+}());
 
-    function decrementHistory() {
-        currentHistory -= 1;
-        getData();
-    }
-
-    function setWeekButtons(moreLeft) {
-        $('.newerButton').toggle(currentHistory > 0);
-        $('.olderButton').toggle(moreLeft);
-    }
-
-    function toggleData(toRecent) {
-        if (recent === toRecent) return;
-        recent = !recent;
-        let $recentDataButton = $('.recentDataButton');
-        let $popularDataButton = $('.popularDataButton');
-        const selectButton = toRecent ? $recentDataButton : $popularDataButton;
-        const deselectButton = toRecent ? $popularDataButton : $recentDataButton;
-        selectButton.addClass("selected");
-        deselectButton.removeClass("selected");
-        getData();
-    }
-
-    function getData() {
-        $(".tweet-box").hide();
-        const type = recent ? "recent" : "popular";
-        $.get("/" + type + "?history=" + currentHistory + "&category=" + currentCategory, (response) => {
-            const data = response["items"];
-            const tweets = response["tweets"];
-            const moreLeft = response["moreLeft"];
-            setWeekButtons(moreLeft);
-            if (Object.keys(data).length === 0) return;
-            const labels = prettyPrintDates(Object.keys(data));
-            const datasets = [];
-            let itemNames = getItemNames(data);
-            for (let i in itemNames) {
-                const item = itemNames[i];
-                datasets.push({
-                    label: item,
-                    data: getDataForItem(item, data),
-                    fill: false,
-                    backgroundColor: colorPalette[i],
-                    borderColor: colorPalette[i],
-                    pointStyle: pointStyles[i % pointStyles.length],
-                    pointRadius: 6,
-                    lineTension: 0.15,
-                    tweets: getTweetsForItem(item, tweets)
-                })
-            }
-            myChart.data.datasets = datasets;
-            myChart.data.labels = labels.reverse();
-            myChart.update();
-        });
-    }
-
-    function getCategories() {
-        $.get("/categories", (response) => {
-            if (!response.length) return;
-            $('.placeholder').html(response[0].title);
-            for (let cat of response) {
-                $('.select-list__ul').append(
-                    "<li><a href='' style='color: " + colorPalette[1] + "' data-category-name='" + cat.name + "'>" + cat.title + "</a><hr>"
-                )
-
-            }
-            currentCategory = response[0].name;
-            initializeCategorySelect();
-            getData();
-        });
-    }
-
-    function initialize() {
-        registerEvents();
-        getCategories();
-    }
+SatisfactionObserver.interactionHandler = (function () {
 
     function initializeCategorySelect() {
-
         let placeHolderSel = '.placeholder';
         let listUlSel = '.select-list__ul';
 
@@ -147,11 +174,38 @@ const SatisfactionObserver = (function () {
 
             $(listUlSel).find('li').eq(index).prependTo(listUlSel);
             $(listUlSel).toggle();
-            currentCategory = $(this).attr("data-category-name");
-            getData();
+            SatisfactionObserver.setCurrentCategory($(this).attr("data-category-name"));
+            SatisfactionObserver.apiHandler.getData();
         });
+        SatisfactionObserver.apiHandler.getData();
     }
 
+    function toggleData(toRecent) {
+        if (SatisfactionObserver.getRecent() === toRecent) return;
+        SatisfactionObserver.setRecent(!SatisfactionObserver.getRecent());
+        let $recentDataButton = $('.recentDataButton');
+        let $popularDataButton = $('.popularDataButton');
+        const selectButton = toRecent ? $recentDataButton : $popularDataButton;
+        const deselectButton = toRecent ? $popularDataButton : $recentDataButton;
+        selectButton.addClass("selected");
+        deselectButton.removeClass("selected");
+        SatisfactionObserver.apiHandler.getData();
+    }
+
+    function incrementHistory() {
+        SatisfactionObserver.setCurrentHistory(SatisfactionObserver.getCurrentHistory() + 1);
+        SatisfactionObserver.apiHandler.getData();
+    }
+
+    function decrementHistory() {
+        SatisfactionObserver.setCurrentHistory(SatisfactionObserver.getCurrentHistory() - 1);
+        SatisfactionObserver.apiHandler.getData(SatisfactionObserver.dataHandler.onNewData);
+    }
+
+    function setWeekButtons(moreLeft) {
+        $('.newerButton').toggle(SatisfactionObserver.getCurrentHistory() > 0);
+        $('.olderButton').toggle(moreLeft);
+    }
 
     function registerEvents() {
         $('.popularDataButton').click(() => {
@@ -169,11 +223,12 @@ const SatisfactionObserver = (function () {
     }
 
     return {
-        intilialize: initialize,
-        updateCallback: addItemImages
+        registerEvents: registerEvents,
+        setWeekButtons: setWeekButtons,
+        initializeCategorySelect: initializeCategorySelect
     }
-
 }());
+
 
 SatisfactionObserver.chartPluginServices = (function () {
     function registerUpdateCallback(callback) {
@@ -192,6 +247,7 @@ SatisfactionObserver.chartPluginServices = (function () {
  ************************************/
 
 $(document).ready(() => {
-    SatisfactionObserver.chartPluginServices.registerUpdateCallback(SatisfactionObserver.updateCallback);
-    SatisfactionObserver.intilialize();
+    SatisfactionObserver.chartPluginServices.registerUpdateCallback(SatisfactionObserver.dataHandler.addItemImages);
+    SatisfactionObserver.interactionHandler.registerEvents();
+    SatisfactionObserver.apiHandler.getCategories(SatisfactionObserver.interactionHandler.initializeCategorySelect);
 });
