@@ -91,7 +91,7 @@ const myChart = new Chart(ctx, {
                     const positiveTweet = getTweet(dataset.tweets["positive"][tooltipItem.index][0]);
                     const negativeTweet = getTweet(dataset.tweets["negative"][tooltipItem.index][0]);
 
-                    $(".leader-tweet").html(dataset.label);
+                    $(".item-tweet").html(dataset.label);
                     $(".date-tweet").html(data.labels[tooltipItem.index]);
                     $(".positive-tweet").find(".content").html(positiveTweet);
                     $(".negative-tweet").find(".content").html(negativeTweet);

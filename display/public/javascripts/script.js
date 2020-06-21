@@ -1,7 +1,8 @@
 const SatisfactionObserver = (function () {
     'use strict';
-    let recent = true;
+    let recent = false;
     let currentHistory = 0;
+    let currentCategory = -1;
 
     function prettyPrintDates(data) {
         const result = [];
@@ -12,12 +13,12 @@ const SatisfactionObserver = (function () {
         return result
     }
 
-    function getLeaderNames(data) {
+    function getItemNames(data) {
         if (data.length === 0) return [];
         return Object.keys(data[Object.keys(data)[0]]);
     }
 
-    function getDataForLeader(leader, data) {
+    function getDataForItem(leader, data) {
         const result = [];
         for (var day of Object.values(data)) {
             result.unshift(Math.round((day[leader] + Number.EPSILON) * 100) / 100);
@@ -25,7 +26,7 @@ const SatisfactionObserver = (function () {
         return result;
     }
 
-    function getTweetsForLeader(leader, tweets) {
+    function getTweetsForItem(leader, tweets) {
         const result = {positive: [], negative: []};
         for (var day of Object.values(tweets)) {
             result.positive.unshift(day[leader]["pos"]);
@@ -34,16 +35,16 @@ const SatisfactionObserver = (function () {
         return result;
     }
 
-    function addLeaderImages(chart) {
+    function addItemImages(chart) {
         const datasets = chart.config.data.datasets;
         for (let i in datasets) {
             let dataset = datasets[i];
-            const dataForLeader = dataset._meta[0].data;
-            const leaderName = dataset.label;
-            const leaderFlag = new Image(30, 30);
-            let leaderImg = leaderName.split(" ").join("-").toLowerCase().replace(/[^\x00-\x7F]/g, "");
-            leaderFlag.src = "/images/" + leaderImg + ".svg";
-            dataForLeader[dataForLeader.length - 1]._model.pointStyle = leaderFlag;
+            const dataForItem = dataset._meta[0].data;
+            const itemName = dataset.label;
+            const itemLogo = new Image(30, 30);
+            let itemImg = itemName.split(" ").join("-").toLowerCase().replace(/[^\x00-\x7F]/g, "");
+            itemLogo.src = "/images/" + currentCategory + "/" + itemImg + ".svg";
+            dataForItem[dataForItem.length - 1]._model.pointStyle = itemLogo;
         }
     }
 
@@ -77,7 +78,7 @@ const SatisfactionObserver = (function () {
     function getData() {
         $(".tweet-box").hide();
         const type = recent ? "recent" : "popular";
-        $.get("/" + type + "?history=" + currentHistory, (response) => {
+        $.get("/" + type + "?history=" + currentHistory + "&category=" + currentCategory, (response) => {
             const data = response["items"];
             const tweets = response["tweets"];
             const moreLeft = response["moreLeft"];
@@ -85,19 +86,19 @@ const SatisfactionObserver = (function () {
             if (Object.keys(data).length === 0) return;
             const labels = prettyPrintDates(Object.keys(data));
             const datasets = [];
-            let leaderNames = getLeaderNames(data);
-            for (let i in leaderNames) {
-                const leader = leaderNames[i];
+            let itemNames = getItemNames(data);
+            for (let i in itemNames) {
+                const item = itemNames[i];
                 datasets.push({
-                    label: leader,
-                    data: getDataForLeader(leader, data),
+                    label: item,
+                    data: getDataForItem(item, data),
                     fill: false,
                     backgroundColor: colorPalette[i],
                     borderColor: colorPalette[i],
                     pointStyle: pointStyles[i % pointStyles.length],
                     pointRadius: 6,
                     lineTension: 0.15,
-                    tweets: getTweetsForLeader(leader, tweets)
+                    tweets: getTweetsForItem(item, tweets)
                 })
             }
             myChart.data.datasets = datasets;
@@ -106,9 +107,25 @@ const SatisfactionObserver = (function () {
         });
     }
 
+    function getCategories() {
+        $.get("/categories", (response) => {
+            if (!response.length) return;
+            $('.placeholder').html(response[0].title);
+            for (let cat of response) {
+                $('.select-list__ul').append(
+                    "<li><a href='' style='color: " + colorPalette[1] + "' data-category-name='" + cat.name + "'>" + cat.title + "</a><hr>"
+                )
+
+            }
+            currentCategory = response[0].name;
+            initializeCategorySelect();
+            getData();
+        });
+    }
+
     function initialize() {
         registerEvents();
-        initializeCategorySelect();
+        getCategories();
     }
 
     function initializeCategorySelect() {
@@ -126,12 +143,12 @@ const SatisfactionObserver = (function () {
             var index = $(this).parent().index();
 
             let text = $(this).text();
-            console.log(index);
             $(placeHolderSel).text(text).css('opacity', '1');
 
             $(listUlSel).find('li').eq(index).prependTo(listUlSel);
             $(listUlSel).toggle();
-
+            currentCategory = $(this).attr("data-category-name");
+            getData();
         });
     }
 
@@ -152,9 +169,8 @@ const SatisfactionObserver = (function () {
     }
 
     return {
-        registerEvents: initialize,
-        requestData: getData,
-        updateCallback: addLeaderImages
+        intilialize: initialize,
+        updateCallback: addItemImages
     }
 
 }());
@@ -177,6 +193,5 @@ SatisfactionObserver.chartPluginServices = (function () {
 
 $(document).ready(() => {
     SatisfactionObserver.chartPluginServices.registerUpdateCallback(SatisfactionObserver.updateCallback);
-    SatisfactionObserver.registerEvents();
-    SatisfactionObserver.requestData();
+    SatisfactionObserver.intilialize();
 });
