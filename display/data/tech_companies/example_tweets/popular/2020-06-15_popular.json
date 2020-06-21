@@ -1,0 +1,98 @@
+{
+  "Google": {
+    "pos": [
+      {
+        "1271995072570183681": "@SohrabAhmari @Google Candidate for best tweet of all time."
+      }
+    ],
+    "neg": [
+      {
+        "1272307608251031553": "Case number 101109552901\n\nThis is the worst customer service I have ever received.   \n\n@Google I'm on my way"
+      }
+    ]
+  },
+  "Facebook": {
+    "pos": [
+      {
+        "1272021494286123008": "\"Could not put it down!\" Five stars for IMMORTAL FEAR: A Medical Thriller, a Dr. Powers Mystery. Get the ebook or audiobook now. https://t.co/Nc5cG7njUp #facebook #nowplaying https://t.co/TbUSF4Dwp2"
+      }
+    ],
+    "neg": [
+      {
+        "1272054015711420416": "@why0hy @Facebook A total disgrace. You ban this but accept Trump\u2019s racist posts"
+      }
+    ]
+  },
+  "Amazon": {
+    "pos": [
+      {
+        "1272056194123927552": "Take yourself on an amazing journey within the pages of this outstanding 5-star-multi-award-winning read!\n#amazon.com https://t.co/Dx5SbqYYNc https://t.co/LVJFJw0vhR"
+      }
+    ],
+    "neg": [
+      {
+        "1272037869977133056": "@amazon Fuck Amazon. You are owned by a horrible excuse for a human being. A true monster. No one should horde the wealth he does.  Truly the most disgusting human being alive. #FuckAmazon"
+      }
+    ]
+  },
+  "Hewlett Packard": {
+    "pos": [
+      {
+        "1272150532896014337": "@Laurensexy6969 @Apple @Lenovo @HP @Acer @ASUS @Microsoft @HPUK @MicrosoftUK @AcerUK_Official @ASUSUK Get a Mac. Look great and easy to use. Will suit you perfectly. \ud83d\ude1c"
+      }
+    ],
+    "neg": [
+      {
+        "1272118736774811648": "@HP The worst laptop I have ever used in my lifetime and the even worse after sale services of the company ever availed by me. I pledge not to buy any product of HP in my whole life again. Chat ID: 35884606."
+      }
+    ]
+  },
+  "Apple": {
+    "pos": [
+      {
+        "1272287700385660929": "The 10 Best Shows to Watch on ##Apple TV+ https://t.co/G20pgZ7qoV"
+      }
+    ],
+    "neg": [
+      {
+        "1272265563398533120": "The #Apple TV remote is the worst-engineered product I've ever used. What a piece of shit"
+      }
+    ]
+  },
+  "PayPal": {
+    "pos": [
+      {
+        "1272286651876851712": "Get your ass,in my bed! #shemaledubai #ladyboydubai #ladyboymassage #fullservice #top #buttom #both #bigass #bigboobs #camerashow #videocallshow #paypal https://t.co/2FsRcUfmBh"
+      }
+    ],
+    "neg": [
+      {
+        "1272317708907032577": "@PayPal you're literally garbage i did nothing and my paypal got banned what is this"
+      }
+    ]
+  },
+  "Uber": {
+    "pos": [
+      {
+        "1272236144118435841": "@dkhos @Uber Thanks for that email! Amazing! Much respect!"
+      }
+    ],
+    "neg": [
+      {
+        "1272264954385698818": "@Uber @RedCross Then please stop making your drivers and your staff bleed! You are truly a disgraceful company."
+      }
+    ]
+  },
+  "Microsoft": {
+    "pos": [
+      {
+        "1272189472441094146": "#WindowsUpdate #Windows @Windows @windowsserver @Microsoft @NassimChemaa @softwares_si \nWindows Server 2012 r2 is our favorite version of Windows Server!\nThis operating system is classifie 5 stars! https://t.co/5KlmEcCMz2"
+      }
+    ],
+    "neg": [
+      {
+        "1272292010804883459": "This is getting insane! What a stupid thing to change! The master branch of a repo is the furthest thing from glorifying slavery or racism. \nGET A GRIP!\n@github @Microsoft #github #PoliticalCorrectness \nhttps://t.co/AuBr4zddvb"
+      }
+    ]
+  }
+}
