@@ -1,0 +1,74 @@
+{
+  "Tesla": {
+    "pos": [
+      {
+        "1271954014574436355": "I want a Tesla, it\u2019s really the most perfect car for me !"
+      }
+    ],
+    "neg": [
+      {
+        "1271617565391859712": "The worst delivery experience we ever had. Bought a new tesla model3 and the way sales people treated while giving the keys in showroom is weird @elonmusk  @Tesla #Portland"
+      }
+    ]
+  },
+  "Toyota": {
+    "pos": [
+      {
+        "1271639625199693824": "@ameliaboone @Toyota 4Runner. Have had mine for 10 years. Best purchase of my life! (Trail edition / no 3rd row)"
+      }
+    ],
+    "neg": [
+      {
+        "1271681544923406337": "@JasonKander @jessphoenix2018 This is completely insane. I worked in a peacekeeping mission in the DRC, where we drove either Toyota Prados or Ford Everests. Neither of them armoured, despite the risk of IEDs, etc. Came home to Canada to find our police increasingly militarised, though not yet to this extent."
+      }
+    ]
+  },
+  "Volkswagen": {
+    "pos": [
+      {
+        "1271791727129489410": "@ameliaboone The VW Atlas is the best value, size and performance.  AWD, 22 mpg, and the cargo space is bigger than full size SUVs like the QX80.  My 11 yrs old son and I sleep side by side inside of it instead of pitching a tent.  We love it! https://t.co/JrMCNdqu1B"
+      }
+    ],
+    "neg": [
+      {
+        "1271781210004557824": "@CjHollidayWWG VW Polo Fox. Utter garbage pos my folks bought on purpose to make me drive slowly....."
+      }
+    ]
+  },
+  "Honda": {
+    "pos": [
+      {
+        "1271943586259464193": "2021 Honda AVANCIER - Honda's Best Family SUV | All New Exterior, Interi... https://t.co/CN0qnbc9bq \u0e1c\u0e48\u0e32\u0e19 @YouTube"
+      }
+    ],
+    "neg": [
+      {
+        "1271601222689132546": "That and a Honda Civic is a toxic persons car"
+      }
+    ]
+  },
+  "Daimler": {
+    "pos": [
+      {
+        "1271596875053821952": "Absolutely beautiful wow ! https://t.co/cEo5cDDmPK"
+      }
+    ],
+    "neg": [
+      {
+        "1271608556844994560": "this is so disgusting https://t.co/u5CPndoozQ"
+      }
+    ]
+  },
+  "BMW": {
+    "pos": [
+      {
+        "1271608100001202176": "Hey Race Fans! Check out my latest @realracing Car Customizations video featuring the BMW M3 GT2 ALMS! This is one my favorite designs out of all my BMWs! \nhttps://t.co/Tl45Tmw6aV"
+      }
+    ],
+    "neg": [
+      {
+        "1271613423416115200": "@JackPosobiec Not ever shopping BMW officially boycotted for stupidity"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "categories": [
+    {
+      "name": "leaders",
+      "path": "leaders",
+      "manifest": "manifest.json",
+      "title": "their head of government"
+    },
+    {
+      "name": "tech_companies",
+      "path": "tech_companies",
+      "manifest": "manifest.json",
+      "title": "tech companies"
+    },
+    {
+      "name": "car_manufacturers",
+      "path": "car_manufacturers",
+      "manifest": "manifest.json",
+      "title": "car manufacturers"
+    }
+  ]
+}

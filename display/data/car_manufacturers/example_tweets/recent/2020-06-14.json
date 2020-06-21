@@ -1,0 +1,74 @@
+{
+  "Tesla": {
+    "pos": [
+      {
+        "1271932967280140296": "I drove a Tesla model x today and I've gotta say that was one of the best cars I've ever driven."
+      }
+    ],
+    "neg": [
+      {
+        "1271940189305397248": "fuck it\n jailbreak the tesla"
+      }
+    ]
+  },
+  "Toyota": {
+    "pos": [
+      {
+        "1271911007481405441": "Wow,love this! Check it out: https://t.co/2K3IaKU9bk"
+      }
+    ],
+    "neg": [
+      {
+        "1271924083802939401": "@Kenny_Wallace @DaleJr @NASCAR_Xfinity Toyota won, what a waste!"
+      }
+    ]
+  },
+  "Volkswagen": {
+    "pos": [
+      {
+        "1271910570296573953": "@CjHollidayWWG 1972 Volkswagen Beetle. Best car ever!"
+      }
+    ],
+    "neg": [
+      {
+        "1271855555137744897": "@Conservative_VW The dude can breathe underwater? Holy crap!"
+      }
+    ]
+  },
+  "Honda": {
+    "pos": [
+      {
+        "1271886886747942914": "The best car Honda ever made, the 1999 C-RV https://t.co/miwposieab https://t.co/AM5IuIbKJe"
+      }
+    ],
+    "neg": [
+      {
+        "1271921877175468032": "Shit i was looking at hentai and listening to Mio honda step on full blast and my dad walked in"
+      }
+    ]
+  },
+  "Daimler": {
+    "pos": [
+      {
+        "1271901707992064000": "@goddessgloryttv My top 10 Dream Cars \n\n1) Koenigsegg Agera RS \n2) Pagani Huarya \n3) Lykan Hypersport \n4) Hennessey Venom F5 \n5) Ferrari LaFerrafi \n6) Mercedes Benz AMG SLR \n7) Mercedes Benz AMG SLS \n8) Mclaren 720S \n9) Acura NSX \n10) Rolls Royce Dawn"
+      }
+    ],
+    "neg": [
+      {
+        "1271929999038148608": "This is the most disgusting thing ever, and if you don\u2019t think it is, you TOO are disgusting. https://t.co/uNaHBU2pwN"
+      }
+    ]
+  },
+  "BMW": {
+    "pos": [
+      {
+        "1271854098279731205": "Five million BMWs. \ud83c\uddfa\ud83c\uddf8 #BMWofSLO https://t.co/RScr57AAj8"
+      }
+    ],
+    "neg": [
+      {
+        "1271874605230305282": "@Abramjee Chasing a BMW 140i is just pure stupidity \ud83d\ude14 you can't catch that little pocket rocket \ud83d\ude0f"
+      }
+    ]
+  }
+}

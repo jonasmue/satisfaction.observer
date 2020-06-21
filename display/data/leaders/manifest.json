@@ -1,0 +1,106 @@
+{
+  "items": [
+    {
+      "item": {
+        "name": "Angela Merkel",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "since": "2005-11-22",
+        "until": null,
+        "searchTerm": "Merkel"
+      }
+    },
+    {
+      "item": {
+        "name": "Boris Johnson",
+        "country": {
+          "name": "United Kingdom",
+          "locale": "en-GB"
+        },
+        "since": "2019-07-24",
+        "until": null
+      }
+    },
+    {
+      "item": {
+        "name": "Donald Trump",
+        "country": {
+          "name": "United States",
+          "locale": "en-US"
+        },
+        "since": "2017-01-20",
+        "until": null,
+        "searchTerm": "Trump"
+      }
+    },
+    {
+      "item": {
+        "name": "Mark Rutte",
+        "country": {
+          "name": "Netherlands",
+          "locale": "nl-NL"
+        },
+        "since": "2010-10-14",
+        "until": null,
+        "searchTerm": "Rutte"
+      }
+    },
+    {
+      "item": {
+        "name": "Emmanuel Macron",
+        "country": {
+          "name": "France",
+          "locale": "fr-FR"
+        },
+        "since": "2017-05-14",
+        "until": null,
+        "searchTerm": "Macron"
+      }
+    },
+    {
+      "item": {
+        "name": "Justin Trudeau",
+        "country": {
+          "name": "Canada",
+          "locale": "en-CA"
+        },
+        "since": "2015-11-04",
+        "until": null,
+        "searchTerm": "Trudeau"
+      }
+    },
+    {
+      "item": {
+        "name": "Giuseppe Conte",
+        "country": {
+          "name": "Italy",
+          "locale": "it-IT"
+        },
+        "since": "2018-06-01",
+        "until": null,
+        "searchTerm": "Conte"
+      }
+    },
+    {
+      "item": {
+        "name": "Pedro Sánchez",
+        "country": {
+          "name": "Spain",
+          "locale": "es-ES"
+        },
+        "since": "2018-06-02",
+        "until": null
+      }
+    }
+  ],
+  "cleanReplacement": {
+    "en": "president",
+    "de": "präsident",
+    "fr": "président",
+    "nl": "president",
+    "it": "presidente",
+    "es": "presidente"
+  }
+}

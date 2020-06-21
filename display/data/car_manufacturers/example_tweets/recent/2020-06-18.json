@@ -1,0 +1,74 @@
+{
+  "Tesla": {
+    "pos": [
+      {
+        "1273402345393491968": "@happyjillmoore Top 5 companies apple tesla microsoft google facebook all tech"
+      }
+    ],
+    "neg": [
+      {
+        "1273402582573240321": "@JawnMurray @AprilDRyan TOTAL STUPIDITY.\nSo what is next? \nIs Amazon going to become an improper label because has the name of Greek female warriors and is also the name of the longest river in South America?\nIs Tesla going to be offensive to Serbians with a genius intellect ridiculing Americans?"
+      }
+    ]
+  },
+  "Toyota": {
+    "pos": [
+      {
+        "1273321993576816643": "The best love is the kind that counts the soul; that makes us dream for more, that breathes the grace in our hearts and brings key to our minds. That\u2019s what I hope to give Toyota forever."
+      }
+    ],
+    "neg": [
+      {
+        "1273397121560064000": "Madness.. Toyota have totally lost it.... Everyone has to bow to this oppression... Can't none of you say no? https://t.co/tcJk64KqZU"
+      }
+    ]
+  },
+  "Volkswagen": {
+    "pos": [
+      {
+        "1273383608628187137": "@volkswagen The Best car ever\ud83d\ude0d"
+      }
+    ],
+    "neg": [
+      {
+        "1273384042428108800": "@VW ben on hold with #vwcredit for 33 minutes! Absolutely unacceptable! The \u2018ask an advisor\u2019 feature\u2019 is not working on the web page"
+      }
+    ]
+  },
+  "Honda": {
+    "pos": [
+      {
+        "1273311038331662337": "@WorldSBK @texastornado5 This was by far the best ever championship that WSBK have ever seen. And the Honda SP2 and Ducati 998 two of the sexiest bikes."
+      }
+    ],
+    "neg": [
+      {
+        "1273384124385017857": "@kskgroup2017 Run away Honda, this country is a trash"
+      }
+    ]
+  },
+  "Daimler": {
+    "pos": [
+      {
+        "1273150527187169280": "Today @MercedesBenzInd\nIs launching the all new GLS which we got to sample some time ago. Watch our first drive video here to know more about this absolute banger of an SUV. Big, luxurious and loaded! \n\n2020 Mercedes-Benz GLS | First Drive Review https://t.co/xPkLpr6CgQ\n@odmag"
+      }
+    ],
+    "neg": [
+      {
+        "1273374648625967106": "@Daimler shame on you Mercedes\ud83d\ude24\n\nI bought two new cars in three years.\n\nIn fact, I threw away the money.\n\nKill all my dreams of Mercedes Benz.\n@OlaKaellenius @MercedesBenz @MercedesGlobal"
+      }
+    ]
+  },
+  "BMW": {
+    "pos": [
+      {
+        "1273348137701302279": "@marketing_birds Love this! I always see faces in cars and never met anyone else who does too! \ud83d\ude97 \ud83d\ude98 I think BMW cars look particularly angry and like they need to sneeze \ud83d\ude20\ud83d\ude02"
+      }
+    ],
+    "neg": [
+      {
+        "1273332021524340737": "@CraigZAZ @BanzaiMatai @BMWMotorsport @CarfolioS @Deonskidmark @GuyKilfoil @BMW_SA @BMW @BMWUSA The worst M5 ever"
+      }
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "items": [
+    {
+      "item": {
+        "name": "Google",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "#Google OR @Google"
+      }
+    },
+    {
+      "item": {
+        "name": "Facebook",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "#Facebook OR @Facebook"
+      }
+    },
+    {
+      "item": {
+        "name": "Amazon",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "#Amazon OR @amazon"
+      }
+    },
+    {
+      "item": {
+        "name": "Hewlett Packard",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "@HP"
+      }
+    },
+    {
+      "item": {
+        "name": "Apple",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "#Apple OR @Apple"
+      }
+    },
+    {
+      "item": {
+        "name": "PayPal",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "#PayPal OR @PayPal"
+      }
+    },
+    {
+      "item": {
+        "name": "Uber",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "#Uber OR @Uber"
+      }
+    },
+    {
+      "item": {
+        "name": "Microsoft",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "#Microsoft OR @Microsoft"
+      }
+    }
+  ],
+  "cleanReplacement": {
+    "en": "company"
+  }
+}

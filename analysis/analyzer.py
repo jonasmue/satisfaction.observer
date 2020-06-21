@@ -17,13 +17,13 @@ class SemanticClassificationAnalyzer:
         with open(self.source_file, "r") as input_file:
             tweets = json.load(input_file)
 
-        print("Predicting classes for", len(tweets), "leaders ...")
+        print("Predicting classes for", len(tweets), "items ...")
         classification = {}
-        for leader, leader_tweets in tweets.items():
-            print("\nPredicting classes for", leader, "...")
-            classification[leader] = []
-            for tweet in tqdm(leader_tweets):
+        for item, item_tweets in tweets.items():
+            print("\nPredicting classes for", item, "...")
+            classification[item] = []
+            for tweet in tqdm(item_tweets):
                 c = self.sentiment_analyzer(tweet)[0]
-                classification[leader].append((int(c["label"].split()[0]), c["score"]))
+                classification[item].append((int(c["label"].split()[0]), c["score"]))
         with open(self.target_file, "w") as output_file:
             json.dump(classification, output_file)
