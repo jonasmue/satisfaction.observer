@@ -7,6 +7,12 @@
       "title": "their head of government"
     },
     {
+      "name": "german_parties",
+      "path": "german_parties",
+      "manifest": "manifest.json",
+      "title": "German parties"
+    },
+    {
       "name": "tech_companies",
       "path": "tech_companies",
       "manifest": "manifest.json",

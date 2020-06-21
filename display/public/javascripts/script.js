@@ -142,7 +142,7 @@ SatisfactionObserver.dataHandler = (function () {
             const dataForItem = dataset._meta[0].data;
             const itemName = dataset.label;
             const itemLogo = new Image(30, 30);
-            let itemImg = itemName.split(" ").join("-").toLowerCase().replace(/[^\x00-\x7F]/g, "");
+            let itemImg = itemName.split(" ").join("-").toLowerCase().replace(/[^\x00-\x7F]/g, "").replace("/", "-");
             itemLogo.src = "/images/" + SatisfactionObserver.getCurrentCategory() + "/" + itemImg + ".svg";
             dataForItem[dataForItem.length - 1]._model.pointStyle = itemLogo;
         }

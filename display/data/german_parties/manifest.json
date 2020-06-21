@@ -1,0 +1,87 @@
+{
+  "items": [
+    {
+      "item": {
+        "name": "DIE LINKE",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "Die Linke"
+      }
+    },
+    {
+      "item": {
+        "name": "SPD",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "item": {
+        "name": "Bündnis 90/Die Grünen",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "Die Grünen"
+      }
+    },
+    {
+      "item": {
+        "name": "FDP",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "item": {
+        "name": "CDU",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "item": {
+        "name": "CSU",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "item": {
+        "name": "AfD",
+        "country": {
+          "name": "Germany",
+          "locale": "de-DE"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "AfD"
+      }
+    }
+  ],
+  "cleanReplacement": {
+    "de": "partei"
+  }
+}
