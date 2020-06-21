@@ -1,0 +1,75 @@
+{
+  "items": [
+    {
+      "item": {
+        "name": "Tesla",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "item": {
+        "name": "Toyota",
+        "country": {
+          "name": "Japan",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "item": {
+        "name": "Volkswagen",
+        "country": {
+          "name": "Germany",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "VW OR Volkswagen"
+      }
+    },
+    {
+      "item": {
+        "name": "Honda",
+        "country": {
+          "name": "Japan",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null
+      }
+    },
+    {
+      "item": {
+        "name": "Daimler",
+        "country": {
+          "name": "Germany",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "Daimler OR Mercedes OR Mercedes-Benz"
+      }
+    },
+    {
+      "item": {
+        "name": "BMW",
+        "country": {
+          "name": "Germany",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null
+      }
+    }
+  ],
+  "cleanReplacement": {
+    "en": "company"
+  }
+}

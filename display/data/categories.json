@@ -11,6 +11,12 @@
       "path": "tech_companies",
       "manifest": "manifest.json",
       "title": "tech companies"
+    },
+    {
+      "name": "car_manufacturers",
+      "path": "car_manufacturers",
+      "manifest": "manifest.json",
+      "title": "car manufacturers"
     }
   ]
 }
