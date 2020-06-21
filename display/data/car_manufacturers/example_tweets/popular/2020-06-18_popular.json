@@ -1,0 +1,74 @@
+{
+  "Tesla": {
+    "pos": [
+      {
+        "1273056763181481984": "The Tesla Coil! This man is an absolute musical genius. I highly recommend his work. https://t.co/7JMoJxE8db"
+      }
+    ],
+    "neg": [
+      {
+        "1273404711274602497": "@m40dotcom @TimWJackson @Tesla Yeah this guy is pathetic. Most of his followers are fake as well. Desperate shit"
+      }
+    ]
+  },
+  "Toyota": {
+    "pos": [
+      {
+        "1273052206305021953": "5 of 5 stars to The Toyota Engagement Equation by Tracey Richardson https://t.co/2NkOsKh67G"
+      }
+    ],
+    "neg": [
+      {
+        "1273397121560064000": "Madness.. Toyota have totally lost it.... Everyone has to bow to this oppression... Can't none of you say no? https://t.co/tcJk64KqZU"
+      }
+    ]
+  },
+  "Volkswagen": {
+    "pos": [
+      {
+        "1273209171173953539": "https://t.co/3swarevW3q. This is THE BEST VW commercial you will ever see.   These 3 guys are truly amazing.  Thank you for the memories @aha_com @mortenharket we hope to see you in Los Angeles."
+      }
+    ],
+    "neg": [
+      {
+        "1273241924225380354": "singing to myself: everything is fake, this administration sucks, everyone is lyingggg, people out here dyingggg, and no one gives a fuck! https://t.co/SCV3Q2NhV3"
+      }
+    ]
+  },
+  "Honda": {
+    "pos": [
+      {
+        "1273121167608623104": "Stunningly bold and incredibly intelligent. Experience the best of both worlds. Coming soon. #StunningGenius\n\nShivsai Honda\nFor latest models and your favourite Honda2wheelers kindly contact\n\nShivsai Honda\nRailway feeder road\nAnantapur\nPh- 9885066999, 9949590900 https://t.co/dhEiU5ArkF"
+      }
+    ],
+    "neg": [
+      {
+        "1273060591649697797": "I fucken HATE yuma Honda worthless piece of shit staff. Glad I didn\u2019t purchase my car there."
+      }
+    ]
+  },
+  "Daimler": {
+    "pos": [
+      {
+        "1273150527187169280": "Today @MercedesBenzInd\nIs launching the all new GLS which we got to sample some time ago. Watch our first drive video here to know more about this absolute banger of an SUV. Big, luxurious and loaded! \n\n2020 Mercedes-Benz GLS | First Drive Review https://t.co/xPkLpr6CgQ\n@odmag"
+      }
+    ],
+    "neg": [
+      {
+        "1273374648625967106": "@Daimler shame on you Mercedes\ud83d\ude24\n\nI bought two new cars in three years.\n\nIn fact, I threw away the money.\n\nKill all my dreams of Mercedes Benz.\n@OlaKaellenius @MercedesBenz @MercedesGlobal"
+      }
+    ]
+  },
+  "BMW": {
+    "pos": [
+      {
+        "1273049543224025088": "@whatcar @BMW_UK @BMW @BMWMotorsport \ud83e\udd70\ud83e\udd70\ud83e\udd70\ud83e\udd70 I love it. Absolute beauty of a machine"
+      }
+    ],
+    "neg": [
+      {
+        "1273398676329807878": "@5liveSport @bbc5live @BBCSounds What a joke. Bundesliga returns as smooth as a BMW engine. Ours... As always, just totally incompetent and corrupted. Spent more time choreographing the knee that checking the chip in the Ball. Pathetic. Clear goal. Lucky we have Rugby. Don't miss football. Still a joke"
+      }
+    ]
+  }
+}

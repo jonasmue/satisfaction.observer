@@ -47,7 +47,7 @@ SatisfactionObserver.apiHandler = (function () {
             $('.placeholder').html(response[0].title);
             for (let cat of response) {
                 $('.select-list__ul').append(
-                    "<li><a href='' style='color: " + colorPalette[1] + "' data-category-name='" + cat.name + "'>" + cat.title + "</a><hr>"
+                    "<li><a href='' style='color: " + colorPalette[6] + "' data-category-name='" + cat.name + "'>" + cat.title + "</a><hr>"
                 )
 
             }
