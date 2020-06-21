@@ -7,7 +7,6 @@
           "name": "United States",
           "locale": "en"
         },
-        "logo": "/images/tech_companies/google.svg",
         "since": null,
         "until": null,
         "searchTerm": "#Google OR @Google"
@@ -20,7 +19,6 @@
           "name": "United States",
           "locale": "en"
         },
-        "logo": "/images/tech_companies/facebook.svg",
         "since": null,
         "until": null,
         "searchTerm": "#Facebook OR @Facebook"
@@ -33,7 +31,6 @@
           "name": "United States",
           "locale": "en"
         },
-        "logo": "/images/tech_companies/amazon.svg",
         "since": null,
         "until": null,
         "searchTerm": "#Amazon OR @amazon"
@@ -46,7 +43,6 @@
           "name": "United States",
           "locale": "en"
         },
-        "logo": "/images/tech_companies/hp.svg",
         "since": null,
         "until": null,
         "searchTerm": "@HP"
@@ -59,7 +55,6 @@
           "name": "United States",
           "locale": "en"
         },
-        "logo": "/images/tech_companies/apple.svg",
         "since": null,
         "until": null,
         "searchTerm": "#Apple OR @Apple"
@@ -72,7 +67,6 @@
           "name": "United States",
           "locale": "en"
         },
-        "logo": "/images/tech_companies/paypal.svg",
         "since": null,
         "until": null,
         "searchTerm": "#PayPal OR @PayPal"
@@ -85,7 +79,6 @@
           "name": "United States",
           "locale": "en"
         },
-        "logo": "/images/tech_companies/uber.svg",
         "since": null,
         "until": null,
         "searchTerm": "#Uber OR @Uber"
@@ -98,7 +91,6 @@
           "name": "United States",
           "locale": "en"
         },
-        "logo": "/images/tech_companies/microsof.svg",
         "since": null,
         "until": null,
         "searchTerm": "#Microsoft OR @Microsoft"

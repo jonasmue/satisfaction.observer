@@ -9,18 +9,16 @@ class Item:
     An item is a canonical element of a category.
     """
 
-    def __init__(self, name: str, logo: str, country: Country, since: datetime, until: datetime,
+    def __init__(self, name: str, country: Country, since: datetime, until: datetime,
                  search_term: str):
         """
         :param name: The item's name
-        :param logo: An image depicting the item, or a fallback
         :param country: The <code>Country</code> where the item is located
         :param since: Start date of item
         :param until: End date of item, or <code>None</code> if ongoing
         :param search_term: Determines the term that is supposed to be searched for
         """
         self.name = name
-        self.logo = logo
         self.country = country
         self.since = since
         self.until = until
@@ -47,12 +45,11 @@ class ItemFactory:
         for element in item_dict["items"]:
             item = element["item"]
             name = item["name"]
-            logo = item["logo"]
             since = datetime.strptime(item["since"], "%Y-%m-%d") if item["since"] is not None else None
             until = datetime.strptime(item["until"], "%Y-%m-%d") if item["until"] is not None else None
             country_item = item["country"]
             country = Country(country_item["name"], country_item["locale"])
             search_term = item["searchTerm"] if "searchTerm" in item.keys() else name
-            result.append(Item(name, logo, country, since, until, search_term))
+            result.append(Item(name, country, since, until, search_term))
 
         return result, item_dict["cleanReplacement"]
