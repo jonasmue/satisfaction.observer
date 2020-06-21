@@ -1,6 +1,6 @@
 const SatisfactionObserver = (function () {
     'use strict';
-    let recent = false;
+    let recent = true;
     let currentHistory = 0;
     let currentCategory = null;
 
