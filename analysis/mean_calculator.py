@@ -20,7 +20,10 @@ class MeanCalculator:
             weights = [c[1] for c in classification[item] if c[1] > self.threshold]
             assert len(classifications) == len(weights)
             print(len(classifications), "items for", item)
-            mean_normalized_classifications[item] = np.average(classifications, weights=weights) * 100 / 4
+            if sum(weights) == 0:
+                mean_normalized_classifications[item] = 0
+            else:
+                mean_normalized_classifications[item] = np.average(classifications, weights=weights) * 100 / 4
 
         with open(self.target_file, "w") as output_file:
             json.dump(mean_normalized_classifications, output_file)
