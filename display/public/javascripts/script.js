@@ -174,6 +174,7 @@ SatisfactionObserver.interactionHandler = (function () {
 
             $(listUlSel).find('li').eq(index).prependTo(listUlSel);
             $(listUlSel).toggle();
+            SatisfactionObserver.setCurrentHistory(0);
             SatisfactionObserver.setCurrentCategory($(this).attr("data-category-name"));
             SatisfactionObserver.apiHandler.getData();
         });
