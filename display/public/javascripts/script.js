@@ -87,12 +87,14 @@ SatisfactionObserver.dataHandler = (function () {
         let itemNames = getItemNames(data);
         for (let i in itemNames) {
             const item = itemNames[i];
+            let colorIndex = Math.round(i * colorPalette.length / itemNames.length);
+            console.log(colorIndex);
             datasets.push({
                 label: item,
                 data: getDataForItem(item, data),
                 fill: false,
-                backgroundColor: colorPalette[i],
-                borderColor: colorPalette[i],
+                backgroundColor: colorPalette[colorIndex],
+                borderColor: colorPalette[colorIndex],
                 pointStyle: pointStyles[i % pointStyles.length],
                 pointRadius: 6,
                 lineTension: 0.15,
