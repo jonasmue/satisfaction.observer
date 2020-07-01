@@ -108,7 +108,12 @@ SatisfactionObserver.dataHandler = (function () {
         const result = [];
         for (const date of data) {
             const split = date.split("_").shift().split("-");
-            result.push(monthNames[Number.parseInt(split[1]) - 1] + " " + (Number.parseInt(split[2]) - 1));
+            let day = Number.parseInt(split[2]) - 1;
+            let monthOffset = !!day ? 1 : 2;
+            let monthIndex = Number.parseInt(split[1]) - monthOffset;
+            if (monthIndex < 0) monthIndex = monthNames.length - 1;
+            if (day === 0) day = monthLengths[monthIndex];
+            result.push(monthNames[monthIndex] + " " + day);
         }
         return result
     }

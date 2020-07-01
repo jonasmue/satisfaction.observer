@@ -18,6 +18,9 @@ const monthNames = [
     "May", "Jun", "Jul", "Aug",
     "Sep", "Oct", "Nov", "Dec"
 ];
+const monthLengths = [
+    31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+];
 const pointStyles = [
     "circle",
     "rectRot",
