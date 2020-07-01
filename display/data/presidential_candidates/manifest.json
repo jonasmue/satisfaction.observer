@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "item": {
+        "name": "Donald Trump",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "Trump"
+      }
+    },
+    {
+      "item": {
+        "name": "Joe Biden",
+        "country": {
+          "name": "United States",
+          "locale": "en"
+        },
+        "since": null,
+        "until": null,
+        "searchTerm": "Biden"
+      }
+    }
+  ],
+  "cleanReplacement": {
+    "en": "candidate"
+  }
+}

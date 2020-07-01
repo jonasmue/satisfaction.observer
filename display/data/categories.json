@@ -7,6 +7,12 @@
       "title": "their head of government"
     },
     {
+      "name": "presidential_candidates",
+      "path": "presidential_candidates",
+      "manifest": "manifest.json",
+      "title": "US presidential candidates"
+    },
+    {
       "name": "german_parties",
       "path": "german_parties",
       "manifest": "manifest.json",
