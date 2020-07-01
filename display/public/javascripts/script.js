@@ -82,7 +82,7 @@ SatisfactionObserver.dataHandler = (function () {
         const moreLeft = response["moreLeft"];
         SatisfactionObserver.interactionHandler.setWeekButtons(moreLeft);
         if (Object.keys(data).length === 0) return;
-        const labels = prettyPrintDates(Object.keys(data));
+        const labels = Object.keys(data);
         const datasets = [];
         let itemNames = getItemNames(data);
         for (let i in itemNames) {
@@ -102,20 +102,6 @@ SatisfactionObserver.dataHandler = (function () {
         myChart.data.datasets = datasets;
         myChart.data.labels = labels.reverse();
         myChart.update();
-    }
-
-    function prettyPrintDates(data) {
-        const result = [];
-        for (const date of data) {
-            const split = date.split("_").shift().split("-");
-            let day = Number.parseInt(split[2]) - 1;
-            let monthOffset = !!day ? 1 : 2;
-            let monthIndex = Number.parseInt(split[1]) - monthOffset;
-            if (monthIndex < 0) monthIndex = monthNames.length - 1;
-            if (day === 0) day = monthLengths[monthIndex];
-            result.push(monthNames[monthIndex] + " " + day);
-        }
-        return result
     }
 
     function getItemNames(data) {
